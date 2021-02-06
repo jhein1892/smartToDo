@@ -5,6 +5,13 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
+/*
+GET /login
+GET /register
+POST /login/:id
+POST /logout
+*/
+
 const express = require('express');
 const router  = express.Router();
 
