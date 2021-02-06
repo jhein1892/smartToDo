@@ -6,11 +6,10 @@
  */
 
 /*
-B GET /user
-R GET /user:id
-E POST /user:id
-A POST /user
-D POST /user:id
+GET /login
+GET /register
+POST /login/:id
+POST /logout
 */
 
 const express = require('express');
