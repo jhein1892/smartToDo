@@ -15,23 +15,24 @@ body {
     align-items: center;
   }
 
-  .list-containers {
-    border: solid yellow;
-  }
-
-  .col-sm {
-    border: solid grey 1px;
-    width: 25em;
+  .todo-list {
+    background-color: #ededed;
+    width: 17em;
     height: 25em;
-    margin: 2.5em;
     border-radius: 5px;
   }
 
-  // .lists {
-  //   display: flex;
-  //   width: 25em;
-  //   height: 25em;
-  //   margin: 2.5em;
-  //   border: solid green;
-  // }
+  .check-item {
+    background: none;
+    border: none;
+    border-bottom: solid grey 1px;
+  }
+
+  .list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18em, max-content));
+    justify-content: center;
+    justify-items: center;
+    gap: 1rem;
+  }
 }
