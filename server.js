@@ -71,16 +71,22 @@ const getUser = function(username) {
     .then(res => res.rows[0])
     .catch(err => console.log('error'))
   }
-
 exports.getUser = getUser;
+
+// const addUser =  function(user) {
+//   return db.query(`INSERT INTO user (name) VALUES ($1)`,
+//   [user])
+//   .then(res => console.log(res.rows))
+//   .catch(err => err)
+// }
+// exports.addUser = addUser;
 
 const addTodo =  function(userId, todo) {
   return db.query(`INSERT INTO to_dos (user_id, text) VALUES ($1, $2)`,
   [userId, todo])
-  .then(res => console.log(res.rows))
+  .then(res => res.rows)
   .catch(err => err)
 }
-
 exports.addTodo = addTodo;
 
 const getTodos = function(userid) {
@@ -88,7 +94,6 @@ const getTodos = function(userid) {
     .then(res => res.rows)
     .catch(err => console.log('error'))
   }
-
 exports.getTodos = getTodos;
 
 const removeTodo =  function(todoId) {
@@ -97,7 +102,5 @@ const removeTodo =  function(todoId) {
   .then(res => res.rows[0])
   .catch(err => err)
 }
-
-
 exports.removeTodo = removeTodo;
 

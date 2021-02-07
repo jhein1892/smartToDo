@@ -23,7 +23,7 @@ module.exports = (db) => {
         res.cookie("user_id", user.id);
         res.redirect("/todo")
       })
-      .then((err) => err);
+      .catch((err) => console.log("error"));
   });
 
   router.post("/logout", (req, res) => {
