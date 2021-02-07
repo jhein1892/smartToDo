@@ -11,18 +11,18 @@ const router  = express.Router();
 module.exports = (db) => {
   // Display all todos
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM to_dos`;
-    console.log(query);
-    db.query(query)
-      .then(data => {
-        const widgets = data.rows;
-        res.json({ widgets });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+    // let query = `SELECT * FROM to_dos`;
+    // console.log(query);
+    // db.query(query)
+    //   .then(data => {
+    //     const widgets = data.rows;
+    //     res.json({ widgets });
+    //   })
+    //   .catch(err => {
+    //     res
+    //       .status(500)
+    //       .json({ error: err.message });
+    //   });
   });
 
   // Add new todo

@@ -13,49 +13,43 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.2.0/mdb.min.css" rel="stylesheet"/>
 
-    <!-- JS -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
     <!-- MDB -->
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.2.0/mdb.min.js"></script>
   </head>
 
   <body>
     <section id='title'>
       <h1>Let's jot it down.</h1>
-      <form class="text-form">
-        <input type="text" id="user-input" name="user-input"></input>
-        <button type="submit" id="user-input-button" for="user-input">Add</button>
+      <form>
+        <input type="text" id="userInput" name="userInput"></input>
+        <button type="submit" for="userInput">Add</button>
       </form>
     </section>
-
-    <section class="list-grid">
-
-          <div class="todo-list" id="read">
-            <h2>Read</h2>
-            <ul class="list-group">
-              <li class="list-group-item check-item">
-                <div>
-                  <input type="checkbox">
-                  <label>Check me</label>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="todo-list" id="buy">
-            <h2>Buy</h2>
-          </div>
-
-          <div class="todo-list" id="watch">
-            <h2>Watch</h2>
-          </div>
-
-          <div class="todo-list" id="eat">
-            <h2>Eat</h2>
-          </div>
-
+    <section class="container-fluid list-containers">
+      <div class="row">
+        <div class="col-sm" id="read">
+          <h2>Read</h2>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <div>
+                <input type="checkbox">
+                <label>Check me</label>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm" id="buy">
+          <h2>Buy</h2>
+        </div>
+        <div class="col-sm" id="watch">
+          <h2>Watch</h2>
+        </div>
+        <div class="col-sm" id="eat">
+          <h2>Eat</h2>
+        </div>
+      </div>
     </section>
   </body>
 </html>
