@@ -47,17 +47,16 @@ body {
       display: flex;
       height: 2.3em;
       font-size: 16px;
-      justify-content: space-between;
+      justify-content: space-evenly;
       width: 14em;
       margin-right: 1em;
-    }
 
-    #login-form {
-      border: solid #cbcbcb 1px;
-      border-radius: 7px;
-      outline: none;
-      padding: 1em;
-      width: 5em;
+      #login-form {
+        border: solid #cbcbcb 1px;
+        border-radius: 7px;
+        outline: none;
+        width: 4em;
+      }
     }
   }
 
