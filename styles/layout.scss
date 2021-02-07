@@ -110,12 +110,22 @@ body {
         &:hover {
           transform: scale(1.03);
           background-color: #fefcf6;
+
+          .edit {
+            display: block;
+          }
         }
 
         .card-header {
+          display: inline-flex;
           margin-top: 0.5em;
           border-bottom: none;
           border-radius: 5px;
+          justify-content: space-between;
+        }
+
+        .edit {
+          display: none;
         }
 
         .card-body {
