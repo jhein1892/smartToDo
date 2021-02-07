@@ -4,6 +4,39 @@ $font-stack: Helvetica, sans-serif;
 body {
   background-color: #eee;
 
+  nav {
+    display: flex;
+    box-shadow: 0px 10px 3px #ebebeb;
+    font-size: 24px;
+    justify-content: flex-end;
+    align-items: center;
+    height: 2.5em;
+
+    .logins {
+      display: flex;
+      height: 2.3em;
+      font-size: 16px;
+      justify-content: space-between;
+      width: 14em;
+      margin-right: 1em;
+    }
+
+    #nav-buttons {
+      outline: none;
+      background: none;
+      border: solid #cbcbcb 1px;
+      border-radius: 7px;
+    }
+
+    #login-form {
+      border: solid #cbcbcb 1px;
+      border-radius: 7px;
+      outline: none;
+      padding: 1em;
+      width: 5em;
+    }
+  }
+
   h1 {
     color: #244751;
   }
@@ -55,8 +88,8 @@ body {
       height: 25em;
       border-radius: 5px;
 
-      h2{
-        padding:0.5em;
+      h2 {
+        padding: 0.5em;
       }
 
       .check-item {
