@@ -22,6 +22,14 @@
   </head>
 
   <body>
+    <nav>
+      <div class="logins">
+        <button type="submit" id="nav-buttons">Logout</button>
+        <button type="submit" id="nav-buttons" for="user-login">Login</button>
+        <input type="text" id="login-form" name="user-login"></input>
+      </div>
+    </nav>
+
     <section id='title'>
       <h1>Let's jot it down.</h1>
       <form class="text-form">
@@ -33,27 +41,72 @@
     <section class="list-grid">
 
           <div class="todo-list" id="read">
-            <h2>Read</h2>
-            <ul class="list-group">
-              <li class="list-group-item check-item">
-                <div>
-                  <input type="checkbox">
-                  <label>Check me</label>
-                </div>
-              </li>
-            </ul>
+
+            <header class="card-header">
+              <h3>Read</h3>
+            </header>
+
+            <div class="list-group list-group-flush">
+
+              <label class="list-group-item check-item">
+                <input class="form-check-input" type="checkbox"/>
+                <span>Check me</span>
+              </label>
+
+              <label class="list-group-item check-item">
+                <input class="form-check-input" type="checkbox"/>
+                <div>Some Really Long Text REAALY LONG</div>
+              </label>
+
+              <label class="list-group-item check-item">
+                <input class="form-check-input" type="checkbox"/>
+                <span>Check me</span>
+              </label>
+
+              <label class="list-group-item check-item">
+                <input class="form-check-input" type="checkbox"/>
+                <span>Check me</span>
+              </label>
+
+              <label class="list-group-item check-item">
+                <input class="form-check-input" type="checkbox"/>
+                <span>Check me</span>
+              </label>
+
+              <label class="list-group-item check-item">
+                <input class="form-check-input" type="checkbox"/>
+                <span>Check me</span>
+              </label>
+
+              <label class="list-group-item check-item">
+                <input class="form-check-input" type="checkbox"/>
+                <span>Check me</span>
+              </label>
+
+              <label class="list-group-item check-item">
+                <input class="form-check-input" type="checkbox"/>
+                <span>Check me</span>
+              </label>
+
+            </div>
           </div>
 
           <div class="todo-list" id="buy">
-            <h2>Buy</h2>
+            <header class="card-header">
+              <h3>Buy</h3>
+            </header>
           </div>
 
           <div class="todo-list" id="watch">
-            <h2>Watch</h2>
+            <header class="card-header">
+              <h3>Watch</h3>
+            </header>
           </div>
 
           <div class="todo-list" id="eat">
-            <h2>Eat</h2>
+            <header class="card-header">
+              <h3>Eat</h3>
+            </header>
           </div>
 
     </section>
