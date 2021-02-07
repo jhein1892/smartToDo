@@ -56,13 +56,48 @@ app.use("/todo", todosRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  const templateVars = {
-    user: req.cookies["user_id"]
-  }
-  console.log('😎', templateVars)
-  res.render("index", templateVars);
+  res.render("index");
 });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+
+// HELPER FUNCTIONS
+
+const getUser = function(username) {
+  return db.query(`SELECT * FROM users WHERE name = $1`, [username])
+    .then(res => res.rows[0])
+    .catch(err => console.log('error'))
+  }
+
+exports.getUser = getUser;
+
+const addTodo =  function(userId, todo) {
+  return db.query(`INSERT INTO to_dos (user_id, text) VALUES ($1, $2)`,
+  [userId, todo])
+  .then(res => console.log(res.rows))
+  .catch(err => err)
+}
+
+exports.addTodo = addTodo;
+
+const getTodo = function(id) {
+  return db.query(`SELECT * FROM to_dos WHERE id = $1`, [id])
+    .then(res => res.rows[0])
+    .catch(err => console.log('error'))
+  }
+
+exports.getTodo = getTodo;
+
+const removeTodo =  function(todoId) {
+  return db.query(`DELETE FROM to_dos WHERE id = $1`,
+  [todoId])
+  .then(res => res.rows[0])
+  .catch(err => err)
+}
+
+
+exports.removeTodo = removeTodo;
+
