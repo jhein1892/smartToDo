@@ -15,11 +15,9 @@ module.exports = (db) => {
     if (!req.cookies["user_id"]) {
       res.status(404).send("Please login to access this page.");
     } else {
-      let query = `SELECT * FROM to_dos WHERE user_id = $1`;
-      console.log(query);
-      db.query(query, [req.cookies["user_id"]])
+      server.getTodos(req.cookies["user_id"])
         .then(data => {
-          const task = data.rows[0].text;
+          const task = data;
           res.json({ task });
         })
         .catch(err => {
@@ -61,10 +59,10 @@ module.exports = (db) => {
   // Delete a task from list
   router.post("/:id/delete", (req, res) => {
     const todoID = () => {
-      server.getTodo(req.params.id)
+      server.getTodo(req.cookies["user_id"])
         .then((task) => {
-          console.log("😨 Task to delete: ", task.text);
-          task.text;
+          console.log("😨 Task to delete: ", task[req.params.id].text);
+          res.redirect("/")
         })
     }
     server.removeTodo(todoID)

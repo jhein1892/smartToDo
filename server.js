@@ -83,13 +83,13 @@ const addTodo =  function(userId, todo) {
 
 exports.addTodo = addTodo;
 
-const getTodo = function(id) {
-  return db.query(`SELECT * FROM to_dos WHERE id = $1`, [id])
-    .then(res => res.rows[0])
+const getTodos = function(userid) {
+  return db.query(`SELECT * FROM to_dos JOIN users ON user_id = users.id WHERE users.id = $1`, [userid])
+    .then(res => res.rows)
     .catch(err => console.log('error'))
   }
 
-exports.getTodo = getTodo;
+exports.getTodos = getTodos;
 
 const removeTodo =  function(todoId) {
   return db.query(`DELETE FROM to_dos WHERE id = $1`,
