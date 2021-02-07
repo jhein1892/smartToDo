@@ -36,7 +36,8 @@ module.exports = (db) => {
     const task = req.body.user_input;
     server.addTodo(req.cookies["user_id"], task)
       .then((task) => {
-        console.log("✅ Task added: ")
+        console.log("✅ Task added")
+        res.redirect("/")
       })
       .catch(err => {
         res
