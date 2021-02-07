@@ -76,7 +76,6 @@ body {
   }
 
   .container {
-
     .list-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(18em, max-content));
@@ -92,19 +91,10 @@ body {
           margin-top: 0.5em;
           border-bottom: none;
           border-radius: 5px;
+        }
 
-          .check-item {
-            display: flex;
-            align-items: center;
-            background: none;
-            border-bottom: solid transparent 1px;
-            width: 15em;
-            margin: auto;
-          }
-
-          .list-group {
-            overflow: auto;
-          }
+        .card-body {
+          overflow: auto;
 
           .list-group-item {
             border-color: #c7c7c7;
@@ -113,7 +103,6 @@ body {
 
           .form-check-input {
             min-width: 1.125em;
-            margin-top: 0em;
             margin-right: 0.8em;
           }
         }
