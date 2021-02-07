@@ -34,9 +34,13 @@
   <body>
     <nav>
       <div class="logins">
-        <button type="submit" class="centerlined" id="nav-buttons">Logout</button>
-        <button type="submit" class="centerlined" id="nav-buttons" for="user-login">Login</button>
-        <input type="text" id="login-form" name="user-login" />
+        <form action="/user/logout" method="POST">
+          <button type="submit" class="centerlined" id="nav-buttons">Logout</button>
+        </form>
+        <form action="/user/login" method="POST">
+          <button type="submit" class="centerlined" id="nav-buttons" for="user-login">Login</button>
+          <input type="text" id="login-form" name="user" />
+        </form>
       </div>
     </nav>
 
@@ -44,8 +48,8 @@
 
     <section id="title">
       <h1>Let's jot it down.</h1>
-      <form class="text-form">
-        <input type="text" id="user-input" name="user-input" />
+      <form class="text-form" action="/todo" method="POST">
+        <input type="text" id="user-input" name="user_input" />
         <button type="submit" class="centerlined" id="user-input-button" for="user-input">
           Add
         </button>
