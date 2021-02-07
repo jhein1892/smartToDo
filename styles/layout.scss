@@ -2,7 +2,7 @@
 $font-stack: Helvetica, sans-serif;
 
 body {
-  background-color: #EEE;
+  background-color: #eee;
 
   h1 {
     color: #244751;
@@ -15,19 +15,23 @@ body {
     align-items: center;
   }
 
-  #listContainer {
-    display: flex;
-    justify-content: space-between;
-    border-color: black;
-    border-style: dotted;
-    align-items: center;
+  .list-containers {
+    border: solid yellow;
   }
 
-  .lists{
-    display: flex;
+  .col-sm {
+    border: solid grey 1px;
     width: 25em;
     height: 25em;
     margin: 2.5em;
-    border: solid green;
+    border-radius: 5px;
   }
+
+  // .lists {
+  //   display: flex;
+  //   width: 25em;
+  //   height: 25em;
+  //   margin: 2.5em;
+  //   border: solid green;
+  // }
 }
