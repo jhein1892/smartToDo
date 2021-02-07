@@ -4,6 +4,38 @@ $font-stack: Helvetica, sans-serif;
 body {
   background-color: #ffffff;
 
+  .centerlined {
+    border: none;
+    color: #221312;
+    background-color: transparent;
+    padding-bottom: calc(1px * 2);
+    position: relative;
+    transition: 0.3s ease;
+    font-weight: 400;
+    cursor: pointer;
+    font-size: 18px;
+
+    &::after {
+      display: block;
+      background-color: #221312;
+      width: 100%;
+      left: 0;
+      transform-origin: bottom center;
+      height: 1px;
+      position: absolute;
+      bottom: 0;
+      transform: scaleX(0);
+      transition: 0.3s ease;
+      content: "";
+    }
+    &:hover::after {
+      transform: scaleX(1);
+    }
+    &:hover {
+      letter-spacing: 1px;
+    }
+  }
+
   nav {
     display: flex;
     font-size: 24px;
@@ -18,13 +50,6 @@ body {
       justify-content: space-between;
       width: 14em;
       margin-right: 1em;
-    }
-
-    #nav-buttons {
-      outline: none;
-      background: none;
-      border: solid #cbcbcb 1px;
-      border-radius: 7px;
     }
 
     #login-form {
@@ -67,10 +92,6 @@ body {
         margin-top: 1em;
         width: 5em;
         height: 2.1em;
-        outline: none;
-        background: none;
-        border: solid #cbcbcb 1px;
-        border-radius: 7px;
       }
     }
   }
@@ -94,7 +115,10 @@ body {
         }
 
         .card-body {
-          overflow: auto;
+          overflow: hidden;
+          &:hover {
+            overflow-y: scroll;
+          }
 
           .list-group-item {
             border-color: #c7c7c7;
