@@ -107,6 +107,11 @@ body {
       .card {
         width: 17em;
         height: 25em;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          transform: scale(1.03);
+          background-color: #fefcf6;
+        }
 
         .card-header {
           margin-top: 0.5em;
@@ -123,6 +128,7 @@ body {
           .list-group-item {
             border-color: #c7c7c7;
             padding-left: 0.5em;
+            background: transparent;
           }
 
           .form-check-input {
