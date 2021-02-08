@@ -147,6 +147,14 @@ body {
               margin-top: 0;
               min-width: 1.125em;
               margin-right: 0.8em;
+              opacity: 30%;
+
+              &:before {
+                opacity: 0;
+              }
+              &:hover {
+                opacity: 60%;
+              }
             }
           }
         }

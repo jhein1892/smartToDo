@@ -30,6 +30,7 @@
   </head>
 
   <body>
+    <!-- NAVBAR -->
     <nav>
       <div class="logins">
         <form action="/user/logout" method="POST">
@@ -44,6 +45,7 @@
       </div>
     </nav>
 
+    <!-- INPUT FORM -->
     <section id="title">
       <h1>Let's jot it down.</h1>
       <form class="text-form" action="/todo" method="POST">
@@ -59,19 +61,24 @@
       </form>
     </section>
 
+    <!-- CARD CONTAINER -->
     <section class="container">
-      <div class="list-grid">
+      <div class="list-grid" id="cardgrid">
         <div class="col">
+          <!-- READ CARD -->
           <div class="card" id="read">
             <header class="card-header">
               <h3>Read</h3>
-              <i class="card-icon bi bi-pencil-square"></i>
+              <i class="card-icon bi bi-pencil-square edit-read"></i>
             </header>
 
+            <!-- CHECKLIST -->
             <div class="card-body">
               <div id="readlist" class="list-group list-group-flush">
                 <label class="list-group-item">
+                  <!-- CHECKBOX -->
                   <input class="form-check-input" type="checkbox" />
+
                   <span>Brave New World</span>
                   <i class="card-icon bi bi-x"></i>
                 </label>
@@ -187,7 +194,7 @@
       </div>
     </section>
 
-    <script type="text/javascript" src="/scripts/listSort.js"></script>
+    <script type="text/javascript" src="/scripts/cards.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </body>
 </html>
