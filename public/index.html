@@ -25,25 +25,28 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
     />
-
-    <!-- JS -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-
-    <!-- MDB -->
   </head>
 
   <body>
+    <!-- NAVBAR -->
     <nav>
       <div class="logins">
-        <button type="submit" id="nav-buttons">Logout</button>
-        <button type="submit" id="nav-buttons" for="user-login">Login</button>
-        <input type="text" id="login-form" name="user-login"></input>
+        <form action="/user/logout" method="POST">
+          <button type="submit" class="centerlined">Logout</button>
+        </form>
+        <form action="/user/login" method="POST">
+          <button type="submit" class="centerlined" for="user-login">
+            Login
+          </button>
+          <input type="text" id="login-form" name="user" />
+        </form>
       </div>
     </nav>
 
-    <section id='title'>
+    <!-- INPUT FORM -->
+    <section id="title">
       <h1>Let's jot it down.</h1>
       <form class="text-form" action="/todo" method="POST">
         <input type="text" id="user-input" name="user_input" />
@@ -58,56 +61,40 @@
       </form>
     </section>
 
-    <section class="list-grid">
-
-          <div class="todo-list" id="read">
-
+    <!-- CARD CONTAINER -->
+    <section class="container">
+      <div class="list-grid" id="cardgrid">
+        <div class="col">
+          <!-- READ CARD -->
+          <div class="card" id="read">
             <header class="card-header">
               <h3>Read</h3>
+              <i class="card-icon bi bi-pencil-square edit-read"></i>
             </header>
 
-            <div class="list-group list-group-flush">
+            <!-- CHECKLIST -->
+            <div class="card-body">
+              <div id="readlist" class="list-group list-group-flush">
+                <label class="list-group-item">
+                  <!-- CHECKBOX -->
+                  <input class="form-check-input" type="checkbox" />
 
-              <label class="list-group-item check-item">
-                <input class="form-check-input" type="checkbox"/>
-                <span>Check me</span>
-              </label>
+                  <span>Brave New World</span>
+                  <i class="card-icon bi bi-x"></i>
+                </label>
 
-              <label class="list-group-item check-item">
-                <input class="form-check-input" type="checkbox"/>
-                <div>Some Really Long Text REAALY LONG</div>
-              </label>
+                <label class="list-group-item">
+                  <input class="form-check-input" type="checkbox" />
+                  <span>Harry Potter and the Deathly Hallows</span>
+                  <i class="card-icon bi bi-x"></i>
+                </label>
 
-              <label class="list-group-item check-item">
-                <input class="form-check-input" type="checkbox"/>
-                <span>Check me</span>
-              </label>
-
-              <label class="list-group-item check-item">
-                <input class="form-check-input" type="checkbox"/>
-                <span>Check me</span>
-              </label>
-
-              <label class="list-group-item check-item">
-                <input class="form-check-input" type="checkbox"/>
-                <span>Check me</span>
-              </label>
-
-              <label class="list-group-item check-item">
-                <input class="form-check-input" type="checkbox"/>
-                <span>Check me</span>
-              </label>
-
-              <label class="list-group-item check-item">
-                <input class="form-check-input" type="checkbox"/>
-                <span>Check me</span>
-              </label>
-
-              <label class="list-group-item check-item">
-                <input class="form-check-input" type="checkbox"/>
-                <span>Check me</span>
-              </label>
-
+                <label class="list-group-item">
+                  <input class="form-check-input" type="checkbox" />
+                  <span>Harry Potter and the Philosopher's Stone</span>
+                  <i class="card-icon bi bi-x"></i>
+                </label>
+              </div>
             </div>
           </div>
         </div>
@@ -115,25 +102,96 @@
           <div class="todo-list" id="buy">
             <header class="card-header">
               <h3>Buy</h3>
+              <i class="card-icon bi bi-pencil-square"></i>
             </header>
+
+            <div class="card-body">
+              <div id="buylist" class="list-group list-group-flush">
+                <label class="list-group-item">
+                  <input class="form-check-input" type="checkbox" />
+                  <span>Onion chips</span>
+                  <i class="card-icon bi bi-x"></i>
+                </label>
+
+                <label class="list-group-item">
+                  <input class="form-check-input" type="checkbox" />
+                  <span>Canned tuna</span>
+                  <i class="card-icon bi bi-x"></i>
+                </label>
+
+                <label class="list-group-item">
+                  <input class="form-check-input" type="checkbox" />
+                  <span>Butter chicken sauce</span>
+                  <i class="card-icon bi bi-x"></i>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
 
           <div class="todo-list" id="watch">
             <header class="card-header">
               <h3>Watch</h3>
+              <i class="card-icon bi bi-pencil-square"></i>
             </header>
+
+            <div class="card-body">
+              <div id="watchlist" class="list-group list-group-flush">
+                <label class="list-group-item">
+                  <input class="form-check-input" type="checkbox" />
+                  <span>Queen's Gambit</span>
+                  <i class="card-icon bi bi-x"></i>
+                </label>
+
+                <label class="list-group-item">
+                  <input class="form-check-input" type="checkbox" />
+                  <span>The Office</span>
+                  <i class="card-icon bi bi-x"></i>
+                </label>
+
+                <label class="list-group-item">
+                  <input class="form-check-input" type="checkbox" />
+                  <span>Breaking Bad</span>
+                  <i class="card-icon bi bi-x"></i>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
 
           <div class="todo-list" id="eat">
             <header class="card-header">
               <h3>Eat</h3>
+              <i class="card-icon bi bi-pencil-square"></i>
             </header>
+
+            <div class="card-body">
+              <div id="eatlist" class="list-group list-group-flush">
+                <label class="list-group-item">
+                  <input class="form-check-input" type="checkbox" />
+                  <span>Mc Donald's</span>
+                  <i class="card-icon bi bi-x"></i>
+                </label>
+
+                <label class="list-group-item">
+                  <input class="form-check-input" type="checkbox" />
+                  <span>Stormcrow Ale House</span>
+                  <i class="card-icon bi bi-x"></i>
+                </label>
+
+                <label class="list-group-item">
+                  <input class="form-check-input" type="checkbox" />
+                  <span>Tim Horton's</span>
+                  <i class="card-icon bi bi-x"></i>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
     </section>
+
+    <script type="text/javascript" src="/scripts/cards.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
   </body>
 </html>

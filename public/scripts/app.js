@@ -9,8 +9,14 @@
 //   });
 // });
 
-$(document).ready(function() {
-  console.log('Here')
+const request = require('request')
+const booksUrl = "https://www.googleapis.com/books/v1/volumes?q=intitle:brave+new+world&amp;key=AIzaSyAdv_oMkP87wzdahZPNw2Gyph8Uk_ojdYs";
+
+request(booksUrl, (res, req) => {
+  //So we will need to take the input, and put it into the url. Will need to adjust the input though, and switch out all spaces with '+'.
+  // Might even have to make seperate vars for each url that we are searching to.
+  const myBody = JSON.parse(req.body)
+  console.log(myBody.items)
 })
 
 // const request = require('request')
@@ -73,4 +79,8 @@ $(document).ready(function() {
 
 // 	console.log(body);
 // });
+
+	console.log(body);
+
+
 
