@@ -2,11 +2,11 @@
 $font-stack: Helvetica, sans-serif;
 
 body {
-  background-color: #ffffff;
+  background-color: #fbfbfb!important;
 
   .centerlined {
     border: none;
-    color: #221312;
+    color: #454545;
     background-color: transparent;
     padding-bottom: calc(1px * 2);
     position: relative;
@@ -17,7 +17,7 @@ body {
 
     &::after {
       display: block;
-      background-color: #221312;
+      background-color: #454545;
       width: 100%;
       left: 0;
       transform-origin: bottom center;
@@ -31,17 +31,16 @@ body {
     &:hover::after {
       transform: scaleX(1);
     }
-    &:hover {
-      letter-spacing: 1px;
-    }
   }
 
   nav {
+    background-color: #fafafa;
     display: flex;
     font-size: 24px;
     justify-content: flex-end;
     align-items: center;
-    height: 2.5em;
+    height: 3em;
+    box-shadow: 0 10px 10px #d5d5d5;
 
     .logins {
       display: flex;
@@ -53,6 +52,7 @@ body {
 
       #login-form {
         border: solid #cbcbcb 1px;
+        margin-left: 0.6em;
         border-radius: 7px;
         outline: none;
         width: 4em;
@@ -66,8 +66,9 @@ body {
 
   #title {
     display: flex;
+    margin-top: 8em;
     margin: 5em;
-    margin-bottom: 9em;
+    margin-bottom: 8em;
     flex-direction: column;
     align-items: center;
 
@@ -109,8 +110,7 @@ body {
         transition: all 0.2s ease-in-out;
         &:hover {
           transform: scale(1.03);
-          background-color: #fefcf6;
-
+          background-color: #f0f7ff;
           .card-icon {
             transition: all 0.2s ease-in-out;
             opacity: 100%;
