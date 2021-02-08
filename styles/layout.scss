@@ -111,8 +111,9 @@ body {
           transform: scale(1.03);
           background-color: #fefcf6;
 
-          .edit {
-            display: block;
+          .card-icon {
+            transition: all 0.2s ease-in-out;
+            opacity: 100%;
           }
         }
 
@@ -124,8 +125,9 @@ body {
           justify-content: space-between;
         }
 
-        .edit {
-          display: none;
+        .card-icon {
+          opacity: 0%;
+          margin-left: auto;
         }
 
         .card-body {
@@ -135,14 +137,17 @@ body {
           }
 
           .list-group-item {
-            border-color: #c7c7c7;
             padding-left: 0.5em;
+            padding-right: 0.5em;
             background: transparent;
-          }
+            display: flex;
+            align-items: center;
 
-          .form-check-input {
-            min-width: 1.125em;
-            margin-right: 0.8em;
+            .form-check-input {
+              margin-top: 0;
+              min-width: 1.125em;
+              margin-right: 0.8em;
+            }
           }
         }
       }
