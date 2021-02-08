@@ -12,7 +12,6 @@ const server = require("../server")
 module.exports = (db) => {
 
   router.get("/login", (req, res) => {
-<<<<<<< HEAD
     const templateVars = {
       user: req.cookies["user_id"]
     }
@@ -42,7 +41,6 @@ module.exports = (db) => {
     }
     res.clearCookie("user_id");
     res.render("index", templateVars)
-=======
     //MISSING CODE
   });
 
@@ -61,7 +59,6 @@ module.exports = (db) => {
     res.clearCookie("user_id");
     console.log("🚪 Successfully Logged out")
     res.redirect("/")
->>>>>>> b16b9e4833c49cb02ba6191f1bd5e8690372157f
   });
 
   return router;

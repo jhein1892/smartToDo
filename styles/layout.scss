@@ -4,8 +4,6 @@ $font-stack: Helvetica, sans-serif;
 body {
   background-color: #ffffff;
 
-<<<<<<< HEAD
-=======
   .centerlined {
     border: none;
     color: #221312;
@@ -38,7 +36,6 @@ body {
     }
   }
 
->>>>>>> b16b9e4833c49cb02ba6191f1bd5e8690372157f
   nav {
     display: flex;
     font-size: 24px;
@@ -50,26 +47,6 @@ body {
       display: flex;
       height: 2.3em;
       font-size: 16px;
-<<<<<<< HEAD
-      justify-content: space-between;
-      width: 14em;
-      margin-right: 1em;
-    }
-
-    #nav-buttons {
-      outline: none;
-      background: none;
-      border: solid #cbcbcb 1px;
-      border-radius: 7px;
-    }
-
-    #login-form {
-      border: solid #cbcbcb 1px;
-      border-radius: 7px;
-      outline: none;
-      padding: 1em;
-      width: 5em;
-=======
       justify-content: space-evenly;
       width: 14em;
       margin-right: 1em;
@@ -80,7 +57,6 @@ body {
         outline: none;
         width: 4em;
       }
->>>>>>> b16b9e4833c49cb02ba6191f1bd5e8690372157f
     }
   }
 
@@ -119,45 +95,6 @@ body {
     }
   }
 
-<<<<<<< HEAD
-  .list-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18em, max-content));
-    justify-content: center;
-    justify-items: center;
-    gap: 1rem;
-
-    .card-header{
-      margin-top: 0.5em;
-      border-bottom: none;
-    }
-
-    .todo-list {
-      display: flex;
-      flex-direction: column;
-      background-color: #f5f5f5;
-      width: 17em;
-      height: 25em;
-      border-radius: 5px;
-      vertical-align: bottom;
-
-      .check-item {
-        display: flex;
-        align-items: center;
-        background: none;
-        border-bottom: solid transparent 1px;
-        width: 15em;
-        margin:auto;
-      }
-
-      .list-group {
-        overflow: auto;
-      }
-
-      .list-group-item {
-        border-color: #c7c7c7;
-        padding-left: 0.5em;
-=======
   .container {
     .list-grid {
       display: grid;
@@ -208,7 +145,6 @@ body {
             margin-right: 0.8em;
           }
         }
->>>>>>> b16b9e4833c49cb02ba6191f1bd5e8690372157f
       }
 
       .form-check-input {
