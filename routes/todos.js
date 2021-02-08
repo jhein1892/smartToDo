@@ -8,6 +8,8 @@
 const express = require('express');
 const router  = express.Router();
 const server = require("../server")
+const {findFood, findBooks, findMovie, findItem} = require('../public/scripts/app')
+
 
 module.exports = (db) => {
   // Display all todos
@@ -32,6 +34,23 @@ module.exports = (db) => {
   // Add new todo
   router.post("/", (req, res) => {
     const task = req.body.user_input;
+    findBooks(task).then((result) => {
+      console.log("is a book")
+    });
+    // findMovie(task).then((result) => {
+    //   console.log("is a movie")
+    // })
+    // findItem(task).then((result) => {
+    //   // console.log(result)
+    // })
+
+    // let book = findBooks(task)
+    // let movie = findMovie(task)
+    // let item = findItem(task)
+
+
+
+
     server.addTodo(req.cookies["user_id"], task)
       .then((task) => {
         console.log("✅ Task added")
