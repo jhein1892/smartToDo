@@ -2,11 +2,43 @@
 $font-stack: Helvetica, sans-serif;
 
 body {
-  background-color: #fbfbfb!important;
+  background-image: url("https://i.imgur.com/4VgN36h.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 
+  background-color: #f1f2f3 !important;
+
+  nav {
+    background: rgba(255, 255, 255, 0.523);
+
+    display: flex;
+    font-size: 24px;
+    justify-content: flex-end;
+    align-items: center;
+    height: 3em;
+    // box-shadow: 0 10px 10px #d5d5d5;
+
+    .logins {
+      display: flex;
+      height: 2.3em;
+      font-size: 16px;
+      justify-content: space-evenly;
+      width: 14em;
+      margin-right: 1em;
+
+      #login-form {
+        border: solid #cbcbcb 1px;
+        margin-left: 0.6em;
+        border-radius: 7px;
+        outline: none;
+        width: 4em;
+      }
+    }
+  }
   .centerlined {
     border: none;
-    color: #454545;
+    text-shadow: 3px 3px 5px rgb(145, 145, 145);
+    color: #ffffff;
     background-color: transparent;
     padding-bottom: calc(1px * 2);
     position: relative;
@@ -33,35 +65,8 @@ body {
     }
   }
 
-  nav {
-    background-color: #fafafa;
-    display: flex;
-    font-size: 24px;
-    justify-content: flex-end;
-    align-items: center;
-    height: 3em;
-    box-shadow: 0 10px 10px #d5d5d5;
-
-    .logins {
-      display: flex;
-      height: 2.3em;
-      font-size: 16px;
-      justify-content: space-evenly;
-      width: 14em;
-      margin-right: 1em;
-
-      #login-form {
-        border: solid #cbcbcb 1px;
-        margin-left: 0.6em;
-        border-radius: 7px;
-        outline: none;
-        width: 4em;
-      }
-    }
-  }
-
   h1 {
-    color: #244751;
+    color: #ffffff;
   }
 
   #title {
@@ -165,7 +170,6 @@ body {
         margin-top: 0em;
         margin-right: 0.8em;
       }
-
     }
   }
 }
