@@ -6,9 +6,14 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const server = require("../server")
-const {findFood, findBooks, findMovie, findItem} = require('../public/scripts/app')
+const {
+  findFood,
+  findBooks,
+  findMovie,
+  findItem
+} = require('../public/scripts/app')
 
 
 
@@ -21,12 +26,16 @@ module.exports = (db) => {
       server.getTodos(req.cookies["user_id"])
         .then(data => {
           const task = data;
-          res.json({ task });
+          res.json({
+            task
+          });
         })
         .catch(err => {
           res
             .status(500)
-            .json({ error: err.message });
+            .json({
+              error: err.message
+            });
         });
     }
 
@@ -39,30 +48,48 @@ module.exports = (db) => {
     let book = false;
     let food = false;
     let movie = false;
-    findBooks(task).then((result) => {
-      if (result){
+    let category = [];
+    return findBooks(task).then((result) => {
+      if (result) {
         console.log("It's a Book")
-        book = true;
+        category.push('Book')
+        return task;
       } else {
         console.log('Not a Book')
+        return task;
       }
-    });
-    findFood(task).then((result) => {
-      if (result === task){
-        console.log('Its food!')
-        food = true;
-      } else {
-        console.log('Not food')
-      }
+    }).then((result) => {
+      return findMovie(task).then((result) => {
+        if (result === task) {
+          console.log('Its a movie')
+          category.push('Movie')
+          return task;
+        } else {
+          console.log('Not a movie')
+          return task;
+        }
+      })
+    }).then((result) => {
+      return findFood(task).then((result) => {
+        if (result === task) {
+          console.log('Its food!')
+          category.push('Food')
+          return category;
+        } else {
+          console.log('Not food')
+          return category;
+        }
+      })
+    }).then((result) => {
+      console.log("here", result)
     })
-    findMovie(task).then((result) => {
-      if (result === task) {
-        console.log('Its a movie')
-        movie = true;
-      } else {
-        console.log('Not a movie')
-      }
-    })
+
+
+
+
+
+
+    console.log(category)
     // END OF API SECTION
     server.addTodo(req.cookies["user_id"], task)
       .then((task) => {
@@ -72,7 +99,9 @@ module.exports = (db) => {
       .catch(err => {
         res
           .status(500)
-          .json({ error: err.message });
+          .json({
+            error: err.message
+          });
       });
   });
 
@@ -98,14 +127,16 @@ module.exports = (db) => {
         })
     }
     server.removeTodo(todoID)
-      .then ((todo) => {
+      .then((todo) => {
         res.redirect("/todo")
         console.log("💩 Task removed")
       })
       .catch(err => {
         res
           .status(500)
-          .json({ error: err.message });
+          .json({
+            error: err.message
+          });
       });
   });
 
