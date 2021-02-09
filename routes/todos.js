@@ -46,7 +46,7 @@ module.exports = (db) => {
       }
     });
     findFood(task).then((result) => {
-      // console.log('Food response', result)
+
       if (result === task){
         console.log('Its food!')
         food = true;
@@ -55,7 +55,7 @@ module.exports = (db) => {
       }
     })
     findMovie(task).then((result) => {
-      console.log('Movie result', result)
+      // console.log('Movie result', result)
       if (result === task) {
         console.log('Its a movie')
         movie = true;

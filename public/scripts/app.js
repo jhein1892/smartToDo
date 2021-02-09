@@ -15,7 +15,7 @@ return axios.get(`https://www.googleapis.com/books/v1/volumes?q=istitle::"${myBo
         return body[i].volumeInfo.title
         // console.log(`${body[i].volumeInfo.title} = ${input}`)
       } else {
-        console.log(`${body[i].volumeInfo.title} != ${input}`)
+        // console.log(`${body[i].volumeInfo.title} != ${input}`)
       }
     }
     // console.log(response.data.items)
@@ -53,11 +53,12 @@ function findFood(input) {
     categories: 'restaurants, All'
   },
 }).then(({data}) => {
-  let {businesses} = data
-  businesses.forEach((b) => {
-    return b
-  })
-}).catch(err => console.log(err))
+  let name = data.businesses[0].name
+  if (name === input) {
+    return name
+  }
+
+}).catch(err => err.statusCode)
 
 }
 
@@ -69,7 +70,14 @@ const findMovie = function(input) {
 let myMovie = input.replace(' ', '+')
 return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=ae721a1684f55599ab48cd0e1a2b32db&query=${myMovie}`)
   .then((response) => {
-    return response.data.results[0].title
+    let movie = response.data.results
+    for (let i = 0; i < 10; i++){
+      if (movie[i].title === input){
+        return movie[i].title
+      } else {
+        console.log(`${movie[i].title} !== ${input}`)
+      }
+    }
   })
   .catch((error) => {
     console.log(error)
