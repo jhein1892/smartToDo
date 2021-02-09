@@ -34,9 +34,35 @@ module.exports = (db) => {
   // Add new todo
   router.post("/", (req, res) => {
     const task = req.body.user_input;
+    let book = false;
+    let food = false;
+    let movie = false;
     findBooks(task).then((result) => {
-      console.log("is a book")
+      if (result){
+        console.log("It's a Book")
+        book = true;
+      } else {
+        console.log('Not a Book')
+      }
     });
+    findFood(task).then((result) => {
+      // console.log('Food response', result)
+      if (result === task){
+        console.log('Its food!')
+        food = true;
+      } else {
+        console.log('Not food')
+      }
+    })
+    findMovie(task).then((result) => {
+      console.log('Movie result', result)
+      if (result === task) {
+        console.log('Its a movie')
+        movie = true;
+      } else {
+        console.log('Not a movie')
+      }
+    })
     // findMovie(task).then((result) => {
     //   console.log("is a movie")
     // })

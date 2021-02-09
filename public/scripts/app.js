@@ -7,10 +7,24 @@ const request = require('request')
 
 function findBooks(input) {
   let myBook = input.replace(' ', '+')
-return axios.get(`https://www.googleapis.com/books/v1/volumes?q=intitle::"${myBook}"lccn+&amp;key=AIzaSyAdv_oMkP87wzdahZPNw2Gyph8Uk_ojdYs`)
+return axios.get(`https://www.googleapis.com/books/v1/volumes?q=istitle::"${myBook}"+&amp;key=AIzaSyAdv_oMkP87wzdahZPNw2Gyph8Uk_ojdYs`)
   .then((response) => {
-
-    console.log(response.data.items[0])
+    let body = response.data.items
+    for (let i = 0; i < 10; i++){
+      if (body[i].volumeInfo.title === input){
+        return body[i].volumeInfo.title
+        // console.log(`${body[i].volumeInfo.title} = ${input}`)
+      } else {
+        console.log(`${body[i].volumeInfo.title} != ${input}`)
+      }
+    }
+    // console.log(response.data.items)
+    //  console.log(response.data.items[0])
+    // let {body} = response.data.items
+    // body.forEach((b) => {
+    //   console.log(b)
+    // })
+    // return response.data.items
   })
   .catch((error) => {
     console.log(error)
@@ -35,12 +49,13 @@ function findFood(input) {
   params: {
     location: "Canada",
     term: input,
-    limit: 1
+    limit: 1,
+    categories: 'restaurants, All'
   },
 }).then(({data}) => {
   let {businesses} = data
   businesses.forEach((b) => {
-    console.log(b)
+    return b
   })
 }).catch(err => console.log(err))
 
@@ -54,7 +69,7 @@ const findMovie = function(input) {
 let myMovie = input.replace(' ', '+')
 return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=ae721a1684f55599ab48cd0e1a2b32db&query=${myMovie}`)
   .then((response) => {
-
+    return response.data.results[0].title
   })
   .catch((error) => {
     console.log(error)
