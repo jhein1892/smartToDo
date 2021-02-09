@@ -72,14 +72,6 @@ const getUser = function(username) {
   }
 exports.getUser = getUser;
 
-// const addUser =  function(user) {
-//   return db.query(`INSERT INTO user (name) VALUES ($1)`,
-//   [user])
-//   .then(res => console.log(res.rows))
-//   .catch(err => err)
-// }
-// exports.addUser = addUser;
-
 const addTodo =  function(userId, todo) {
   return db.query(`INSERT INTO to_dos (user_id, text) VALUES ($1, $2)`,
   [userId, todo])
