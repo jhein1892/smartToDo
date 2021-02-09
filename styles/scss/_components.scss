@@ -11,7 +11,7 @@
 
   &::after {
     display: block;
-    background-color: #4f4f4f;
+    background-color: #747474;
     width: 100%;
     left: 0;
     transform-origin: bottom center;
@@ -45,14 +45,6 @@
       width: 17em;
       height: 25em;
       transition: all 0.2s ease-in-out;
-      &:hover {
-        transform: scale(1.03);
-        background-color: #f0f7ff;
-        .card-icon {
-          transition: all 0.2s ease-in-out;
-          opacity: 100%;
-        }
-      }
 
       .card-header {
         display: inline-flex;
@@ -133,5 +125,41 @@
     color: #4f4f4f;
     width: 100%;
     font-size: 14px;
+  }
+}
+
+#read:hover {
+  transform: scale(1.03);
+  background-color: #cdf7ff;
+  .card-icon {
+    transition: all 0.2s ease-in-out;
+    opacity: 100%;
+  }
+}
+
+#eat:hover {
+  transform: scale(1.03);
+  background-color: #ffb4d0;
+  .card-icon {
+    transition: all 0.2s ease-in-out;
+    opacity: 100%;
+  }
+}
+
+#watch:hover {
+  transform: scale(1.03);
+  background-color: #e9daff;
+  .card-icon {
+    transition: all 0.2s ease-in-out;
+    opacity: 100%;
+  }
+}
+
+#buy:hover {
+  transform: scale(1.03);
+  background-color: #d0e0ff;
+  .card-icon {
+    transition: all 0.2s ease-in-out;
+    opacity: 100%;
   }
 }
