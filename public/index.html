@@ -27,22 +27,14 @@
     />
     <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <!-- App JS -->
+    <script type="text/javascript" src="/scripts/helpers.js"></script>
   </head>
 
   <body>
     <!-- NAVBAR -->
     <nav>
-      <div class="logins">
-        <form action="/user/logout" method="POST">
-          <button type="submit" class="centerlined">Logout</button>
-        </form>
-        <form action="/user/login" method="POST">
-          <button type="submit" class="centerlined" for="user-login">
-            Login
-          </button>
-          <input type="text" id="login-form" name="user" />
-        </form>
-      </div>
+      <div class="logins"></div>
     </nav>
 
     <!-- INPUT FORM -->
