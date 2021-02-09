@@ -11,7 +11,7 @@
 
   &::after {
     display: block;
-    background-color: #454545;
+    background-color: #4f4f4f;
     width: 100%;
     left: 0;
     transform-origin: bottom center;
@@ -117,5 +117,21 @@
 }
 
 .tab {
-  color: red;
+  display: inline-flex;
+  justify-content: space-evenly;
+  margin-left: 1em;
+  margin-right: 1em;
+
+  #todo-button {
+    color: #4f4f4f;
+    width: 100%;
+    border-right: 1px solid rgba(0, 0, 0, 0.125);
+    font-size: 14px;
+  }
+
+  #completed-button {
+    color: #4f4f4f;
+    width: 100%;
+    font-size: 14px;
+  }
 }

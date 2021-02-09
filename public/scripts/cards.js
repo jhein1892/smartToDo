@@ -31,6 +31,7 @@ const slideFade = (list) => {
 
 // Expand function
 $(document).ready(function () {
+  $(".tab").hide();
   let expanded = false;
   $(".bi-pencil-square").click(function () {
     if (!expanded) {
@@ -40,7 +41,8 @@ $(document).ready(function () {
         "z-index": "10",
         "font-size": "1em",
       });
-      console.log(expanded);
+
+      $(this).parent().siblings(".tab").slideDown(200);
     } else if (expanded) {
       expanded = false;
       $(this).closest(".card").css({
@@ -48,7 +50,7 @@ $(document).ready(function () {
         "z-index": "",
         "font-size": "",
       });
-      console.log(expanded);
+      $(this).parent().siblings(".tab").slideUp(200);
     }
   });
 
