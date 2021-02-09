@@ -18,8 +18,6 @@ $(() => {
       const tasks = list[id];
       for (const i in tasks) {
         const task = tasks[i];
-        console.log("INDIV TASK:", task)
-
         const $text = task.text;
         const $displayTodo = `<!-- LIST ITEM -->
         <div class="list-item">
@@ -46,6 +44,7 @@ $(() => {
         } else {
           $buy.append($displayTodo);
         }
+        // $($displayTodo).on('click', deleteHandler)
       }
     }
   }
@@ -58,6 +57,7 @@ $(() => {
       success: function(tasks) {
         console.log("data: ", tasks)
         renderList(tasks);
+        addDeleteHandler();
       },
       error: (error) => {console.log(error)}
     });
@@ -88,6 +88,33 @@ $(() => {
     })
     .then(() => loadLists())
   });
+
+  //Avoid page refresh when adding new todo
+  $('.text-form').submit(function(event) {
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: '/todo',
+      dataType: 'json',
+      success: function() {
+        const input = $('#user-input').val()
+        console.log('User input:', input)
+      },
+    })
+    .then(() => loadLists())
+
+  });
+
+  const deleteHandler = function(event) {
+      event.preventDefault();
+      alert('delete?')
+
+  }
+
+  //Delete icon to remove todo from list and db
+  const addDeleteHandler = function () {
+    $('.card-icon').on('click', deleteHandler)
+  }
 
   // In case a page reload is made, the lists will continue to display
   loadLists();
