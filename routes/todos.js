@@ -83,7 +83,7 @@ module.exports = (db) => {
     }).then((result) => {
       console.log("here", result)
     })
-
+  // 1: read, 2: buy, 3: watch, 4: eat
 
 
 
