@@ -130,7 +130,7 @@
 
 #read:hover {
   transform: scale(1.03);
-  background-color: #cdf7ff;
+  background-color: #e0faff;
   .card-icon {
     transition: all 0.2s ease-in-out;
     opacity: 100%;
@@ -163,3 +163,7 @@
     opacity: 100%;
   }
 }
+
+// .read-complete{
+//   opacity: 0%;
+// }
