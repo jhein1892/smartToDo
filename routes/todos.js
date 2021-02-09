@@ -8,6 +8,8 @@
 const express = require('express');
 const router  = express.Router();
 const server = require("../server")
+const {findFood, findBooks, findMovie, findItem} = require('../public/scripts/app')
+
 
 
 module.exports = (db) => {
@@ -33,6 +35,35 @@ module.exports = (db) => {
   // Add new todo
   router.post("/", (req, res) => {
     const task = req.body.user_input;
+    // MUST KEEP BELOW (API REFERENCE)
+    let book = false;
+    let food = false;
+    let movie = false;
+    findBooks(task).then((result) => {
+      if (result){
+        console.log("It's a Book")
+        book = true;
+      } else {
+        console.log('Not a Book')
+      }
+    });
+    findFood(task).then((result) => {
+      if (result === task){
+        console.log('Its food!')
+        food = true;
+      } else {
+        console.log('Not food')
+      }
+    })
+    findMovie(task).then((result) => {
+      if (result === task) {
+        console.log('Its a movie')
+        movie = true;
+      } else {
+        console.log('Not a movie')
+      }
+    })
+    // END OF API SECTION
     server.addTodo(req.cookies["user_id"], task)
       .then((task) => {
         console.log("✅ Task added")
