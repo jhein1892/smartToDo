@@ -34,6 +34,7 @@ module.exports = (db) => {
   // Add new todo
   router.post("/", (req, res) => {
     const task = req.body.user_input;
+    // MUST KEEP BELOW (API REFERENCE)
     let book = false;
     let food = false;
     let movie = false;
@@ -46,7 +47,6 @@ module.exports = (db) => {
       }
     });
     findFood(task).then((result) => {
-
       if (result === task){
         console.log('Its food!')
         food = true;
@@ -55,7 +55,6 @@ module.exports = (db) => {
       }
     })
     findMovie(task).then((result) => {
-      // console.log('Movie result', result)
       if (result === task) {
         console.log('Its a movie')
         movie = true;
@@ -63,20 +62,7 @@ module.exports = (db) => {
         console.log('Not a movie')
       }
     })
-    // findMovie(task).then((result) => {
-    //   console.log("is a movie")
-    // })
-    // findItem(task).then((result) => {
-    //   // console.log(result)
-    // })
-
-    // let book = findBooks(task)
-    // let movie = findMovie(task)
-    // let item = findItem(task)
-
-
-
-
+    // END OF API SECTION
     server.addTodo(req.cookies["user_id"], task)
       .then((task) => {
         console.log("✅ Task added")
