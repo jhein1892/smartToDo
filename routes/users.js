@@ -10,10 +10,6 @@ const router = express.Router();
 const server = require("../server");
 
 module.exports = (db) => {
-  router.get("/login", (req, res) => {
-    //MISSING CODE
-  });
-
   router.post("/login", (req, res) => {
     const username = req.body.user;
     server.getUser(username)
