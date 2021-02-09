@@ -23,6 +23,8 @@ Sortable.create(cardgrid, {
   animation: 150,
 });
 
+
+// Expand function
 $(document).ready(function () {
   let expanded = false;
   $(".bi-pencil-square").click(function () {
