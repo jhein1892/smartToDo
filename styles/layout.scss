@@ -37,7 +37,6 @@ body {
   }
   .centerlined {
     border: none;
-    text-shadow: 3px 3px 5px rgb(145, 145, 145);
     color: #ffffff;
     background-color: transparent;
     padding-bottom: calc(1px * 2);
@@ -109,6 +108,12 @@ body {
       justify-items: center;
       gap: 1rem;
 
+      .list-item {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+      }
+
       .card {
         width: 17em;
         height: 25em;
@@ -130,6 +135,11 @@ body {
           justify-content: space-between;
         }
 
+        .header-text {
+          font-size: 22px;
+          font-weight: 400;
+        }
+
         .card-icon {
           opacity: 0%;
           margin-left: auto;
@@ -147,6 +157,7 @@ body {
             background: transparent;
             display: flex;
             align-items: center;
+            border: none;
 
             .form-check-input {
               margin-top: 0;
@@ -163,6 +174,11 @@ body {
             }
           }
         }
+      }
+
+      .bi-x {
+        margin-top: auto;
+        margin-bottom: auto;
       }
 
       .form-check-input {
