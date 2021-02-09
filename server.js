@@ -72,9 +72,9 @@ const getUser = function(username) {
   }
 exports.getUser = getUser;
 
-const addTodo =  function(userId, todo) {
-  return db.query(`INSERT INTO to_dos (user_id, text) VALUES ($1, $2)`,
-  [userId, todo])
+const addTodo =  function(userId, category, todo) {
+  return db.query(`INSERT INTO to_dos (user_id, cetegory, text) VALUES ($1, $2, $3)`,
+  [userId, category, todo])
   .then(res => res.rows)
   .catch(err => err)
 }

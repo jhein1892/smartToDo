@@ -24,16 +24,6 @@ module.exports = (db) => {
     if (!userID) {
       res.status(404).send("Please login to access this page.");
     }
-    server.getTodos(userID)
-      .then(data => {
-        const task = data;
-        res.send({ task });
-      })
-      .catch(err => {
-        res.status(500).send({ error: err.message });
-      });
-
-
   });
 
   // Add new todo
@@ -47,7 +37,7 @@ module.exports = (db) => {
     return findBooks(task).then((result) => {
       if (result) {
         console.log("It's a Book")
-        category.push('Book')
+        category.push('1')
         return task;
       } else {
         console.log('Not a Book')
@@ -57,7 +47,7 @@ module.exports = (db) => {
       return findMovie(task).then((result) => {
         if (result === task) {
           console.log('Its a movie')
-          category.push('Movie')
+          category.push('3')
           return task;
         } else {
           console.log('Not a movie')
@@ -68,23 +58,33 @@ module.exports = (db) => {
       return findFood(task).then((result) => {
         if (result === task) {
           console.log('Its food!')
-          category.push('Food')
+          category.push('4')
           return category;
         } else {
-          console.log('Not food')
+          console.log('4')
           return category;
         }
       })
     }).then((result) => {
-      console.log("here", result)
+      if (result.includes('4')){
+        return category = '4';
+      } else if (result.includes('1')){
+        return category = '1';
+      } else if (result.includes('3')){
+        return category = '3';
+      } else {
+        return category = '2';
+      }
+    }).then((result) => {
+      console.log(result)
+      server.addTodo(req.cookies["user_id"], result, task)
+      .then((task) => {
+        console.log('Task added')
+        res.redirect('/')
+      })
     })
-  // 1: read, 2: buy, 3: watch, 4: eat
+    .catch(error => console.log(error))
 
-
-
-
-
-    console.log(category)
     // END OF API SECTION
     server.addTodo(req.cookies["user_id"], task)
       .then((task) => {

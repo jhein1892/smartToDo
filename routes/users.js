@@ -8,6 +8,7 @@
 const express = require("express");
 const router = express.Router();
 const server = require("../server");
+const getTodos = require("../server")
 
 module.exports = (db) => {
   router.post("/login", (req, res) => {
@@ -16,6 +17,7 @@ module.exports = (db) => {
       .then((user) => {
         console.log("👋 Logged in as (id): ", user.id);
         res.cookie("user_id", user.id);
+        console.log(getTodos(user.id))
         res.redirect("/todo");
       })
       .catch((err) => console.log("error"));
