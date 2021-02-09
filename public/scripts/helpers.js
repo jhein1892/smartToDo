@@ -81,6 +81,7 @@ $(() => {
       data: {user: user.val().trim()},
       success: function() {
         const username = $('#login-form').val()
+        console.log("Did I get here")
         console.log('logged in as:', username)
         $("#submit-login").replaceWith(`<p>Welcome ${username}!</p>`)
         $(".logins").append(logout);
