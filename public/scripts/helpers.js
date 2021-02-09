@@ -14,18 +14,38 @@ $(() => {
 
 
   const renderList = function(list) {
-    //MUST FIND A WAY TO REDIRECT TO DIFFERENT LOCATIONS ON DOM
-    const $list = $('#list-todo');
     for (const id in list) {
       const tasks = list[id];
       for (const i in tasks) {
         const task = tasks[i];
-        // CHANGE LOCATIONS ACCORDING TO ID
-        const $display = $('<div>').addClass('list-display')
-        const $text = $('<span>').text(task.text);
-        const $category = $('<span>').text(task.category);
-        $display.append($text, $category);
-        $list.prepend($display)
+        console.log("INDIV TASK:", task)
+
+        const $text = task.text;
+        const $displayTodo = `<!-- LIST ITEM -->
+        <div class="list-item">
+          <!-- CHECKBOX -->
+          <label class="list-group-item">
+            <input class="form-check-input" type="checkbox" />
+            <span>${$text}</span>
+          </label>
+          <!-- DELETE BUTTON -->
+          <i class="card-icon bi bi-x"></i>
+        </div>`
+
+        const $read = $('#readlist');
+        const $buy = $('#buylist');
+        const $watch = $('#watchlist');
+        const $eat = $('#eatlist');
+
+        if (task.category === 1 ) {
+          $read.append($displayTodo);
+        } else if (task.category === 3) {
+          $watch.append($displayTodo);
+        } else if (task.category === 4) {
+          $eat.append($displayTodo);
+        } else {
+          $buy.append($displayTodo);
+        }
       }
     }
   }

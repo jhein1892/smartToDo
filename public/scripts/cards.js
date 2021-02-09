@@ -23,9 +23,15 @@ Sortable.create(cardgrid, {
   animation: 150,
 });
 
+//delete list
+const slideFade = (list) => {
+  const fade = { opacity: 0, transition: "opacity 0.5s" };
+  list.css(fade).slideUp();
+};
 
 // Expand function
 $(document).ready(function () {
+  $(".tab").hide();
   let expanded = false;
   $(".bi-pencil-square").click(function () {
     if (!expanded) {
@@ -33,9 +39,10 @@ $(document).ready(function () {
       $(this).closest(".card").css({
         transform: "scale(1.5)",
         "z-index": "10",
-        "font-size": "1em"
+        "font-size": "1em",
       });
-      console.log(expanded);
+
+      $(this).parent().siblings(".tab").slideDown(200);
     } else if (expanded) {
       expanded = false;
       $(this).closest(".card").css({
@@ -43,7 +50,11 @@ $(document).ready(function () {
         "z-index": "",
         "font-size": "",
       });
-      console.log(expanded);
+      $(this).parent().siblings(".tab").slideUp(200);
     }
+  });
+
+  $(".bi-x").click(function () {
+    slideFade($(this.closest(".list-item")));
   });
 });

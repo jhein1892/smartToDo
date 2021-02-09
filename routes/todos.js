@@ -20,24 +20,19 @@ const {
 module.exports = (db) => {
   // Display all todos
   router.get("/", (req, res) => {
-    if (!req.cookies["user_id"]) {
+    const userID = req.cookies["user_id"];
+    if (!userID) {
       res.status(404).send("Please login to access this page.");
-    } else {
-      server.getTodos(req.cookies["user_id"])
-        .then(data => {
-          const task = data;
-          res.json({
-            task
-          });
-        })
-        .catch(err => {
-          res
-            .status(500)
-            .json({
-              error: err.message
-            });
-        });
     }
+    server.getTodos(userID)
+      .then(data => {
+        const task = data;
+        res.send({ task });
+      })
+      .catch(err => {
+        res.status(500).send({ error: err.message });
+      });
+
 
   });
 

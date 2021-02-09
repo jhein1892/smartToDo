@@ -1,0 +1,137 @@
+.centerlined {
+  border: none;
+  color: #ffffff;
+  background-color: transparent;
+  padding-bottom: calc(1px * 2);
+  position: relative;
+  transition: 0.3s ease;
+  font-weight: 400;
+  cursor: pointer;
+  font-size: 18px;
+
+  &::after {
+    display: block;
+    background-color: #4f4f4f;
+    width: 100%;
+    left: 0;
+    transform-origin: bottom center;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    transform: scaleX(0);
+    transition: 0.3s ease;
+    content: "";
+  }
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+.container {
+  .list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18em, max-content));
+    justify-content: center;
+    justify-items: center;
+    gap: 1rem;
+
+    .list-item {
+      display: flex;
+      flex-direction: row;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    }
+
+    .card {
+      width: 17em;
+      height: 25em;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        transform: scale(1.03);
+        background-color: #f0f7ff;
+        .card-icon {
+          transition: all 0.2s ease-in-out;
+          opacity: 100%;
+        }
+      }
+
+      .card-header {
+        display: inline-flex;
+        margin-top: 0.5em;
+        border-bottom: none;
+        border-radius: 5px;
+        justify-content: space-between;
+      }
+
+      .header-text {
+        font-size: 22px;
+        font-weight: 400;
+      }
+
+      .card-icon {
+        opacity: 0%;
+        margin-left: auto;
+      }
+
+      .card-body {
+        overflow: hidden;
+        &:hover {
+          overflow-y: scroll;
+        }
+
+        .list-group-item {
+          padding-left: 0.5em;
+          padding-right: 0.5em;
+          background: transparent;
+          display: flex;
+          align-items: center;
+          border: none;
+
+          .form-check-input {
+            margin-top: 0;
+            min-width: 1.125em;
+            margin-right: 0.8em;
+            opacity: 30%;
+
+            &:before {
+              opacity: 0;
+            }
+            &:hover {
+              opacity: 60%;
+            }
+          }
+        }
+      }
+    }
+
+    .bi-x {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    .form-check-input {
+      min-width: 1.125em;
+      margin-top: 0em;
+      margin-right: 0.8em;
+    }
+  }
+}
+
+.tab {
+  display: inline-flex;
+  justify-content: space-evenly;
+  margin-left: 1em;
+  margin-right: 1em;
+
+  #todo-button {
+    color: #4f4f4f;
+    width: 100%;
+    border-right: 1px solid rgba(0, 0, 0, 0.125);
+    font-size: 14px;
+  }
+
+  #completed-button {
+    color: #4f4f4f;
+    width: 100%;
+    font-size: 14px;
+  }
+}
