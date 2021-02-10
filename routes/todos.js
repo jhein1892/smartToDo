@@ -24,6 +24,14 @@ module.exports = (db) => {
     if (!userID) {
       res.status(404).send("Please login to access this page.");
     }
+    server.getTodos(userID)
+      .then(data => {
+        const task = data;
+        res.send({ task });
+      })
+      .catch(err => {
+        res.status(500).send({ error: err.message });
+      });
   });
 
   // Add new todo
@@ -84,20 +92,7 @@ module.exports = (db) => {
       })
     })
     .catch(error => console.log(error))
-
     // END OF API SECTION
-    server.addTodo(req.cookies["user_id"], task)
-      .then((task) => {
-        console.log("✅ Task added")
-        res.redirect("/")
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({
-            error: err.message
-          });
-      });
   });
 
   // Display todo by id
