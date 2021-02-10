@@ -12,7 +12,6 @@ const {
   findFood,
   findBooks,
   findMovie,
-  findItem
 } = require('../public/scripts/app')
 
 
@@ -23,18 +22,22 @@ module.exports = (db) => {
     const userID = req.cookies["user_id"];
     if (!userID) {
       res.status(404).send("Please login to access this page.");
+    } else {
+      server.getUser(userID)
     }
   });
 
   // Add new todo
   router.post("/", (req, res) => {
-    const task = req.body.user_input;
+    const task = req;
+    console.log("Task", task)
     // MUST KEEP BELOW (API REFERENCE)
     let book = false;
     let food = false;
     let movie = false;
     let category = [];
     return findBooks(task).then((result) => {
+      console.log("IN Books", task)
       if (result) {
         console.log("It's a Book")
         category.push('1')

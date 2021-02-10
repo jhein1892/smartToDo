@@ -4,7 +4,8 @@ const axios = require('axios')
 // // For books
 //Works as expected.
 function findBooks(input) {
-  let myBook = input.replace(' ', '+')
+  console.log("Inpiut", input)
+let myBook = input.replace(' ', '+')
 return axios.get(`https://www.googleapis.com/books/v1/volumes?q=intitle::"${myBook}"+&amp;key=AIzaSyAdv_oMkP87wzdahZPNw2Gyph8Uk_ojdYs`)
   .then((response) => {
     let body = response.data.items
@@ -65,6 +66,5 @@ module.exports = {
   findFood,
   findBooks,
   findMovie,
-  // findItem
 }
 
