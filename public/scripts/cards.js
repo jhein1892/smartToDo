@@ -65,7 +65,12 @@ $(document).ready(function () {
         .find(".complete-tab")
         .slideUp(200);
 
-      $(this).parent().siblings(".card-body").find(".todo-tab").slideDown(200);
+      $(this)
+        .parent()
+        .siblings(".card-body")
+        .find(".todo-tab")
+        .css({ opacity: 100 })
+        .slideDown(200);
     }
   });
 
