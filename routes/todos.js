@@ -37,15 +37,13 @@ module.exports = (db) => {
 
   // Add new todo
   router.post("/", (req, res) => {
-    const task = req;
-    console.log("Task", task)
+    const task = req.body.user_input;
     // MUST KEEP BELOW (API REFERENCE)
     let book = false;
     let food = false;
     let movie = false;
     let category = [];
     return findBooks(task).then((result) => {
-      console.log("IN Books", task)
       if (result) {
         console.log("It's a Book")
         category.push('1')
@@ -87,7 +85,7 @@ module.exports = (db) => {
         return category = '2';
       }
     }).then((result) => {
-      console.log(result)
+      console.log("this is the result for db: ", result)
       server.addTodo(req.cookies["user_id"], result, task)
       .then((task) => {
         console.log('Task added')
@@ -100,37 +98,43 @@ module.exports = (db) => {
 
   // Display todo by id
   router.get("/:id", (req, res) => {
-    let query = `SELECT * FROM to_dos WHERE id = $1`;
-    console.log(query);
-  });
+    server.getTodo(req.cookies["user_id"])
+    .then((task) => {
+      console.log("You selected task: ", task.id);
+      res.send(task.id)
+    })
 
-  // Update todo by id > PENDING TO DECIDE WHETHER OR NOT WE KEEP THIS FEATURE
-  router.post("/:id", (req, res) => {
-    let query = `UPDATE to_dos SET name = $1 WHERE id = $1`;
-    console.log(query);
   });
 
   // Delete a task from list
   router.post("/:id/delete", (req, res) => {
-    const todoID = () => {
-      server.getTodo(req.cookies["user_id"])
-        .then((task) => {
-          console.log("😨 Task to delete: ", task[req.params.id].text);
-          res.redirect("/")
-        })
-    }
-    server.removeTodo(todoID)
+    // console.log("HERE")
+  // link server function
+    // const todoID = () => {
+    const todoId = req.params.id;
+    console.log("TodoID", todoId)
+      // server.getTodos(req.cookies["user_id"])
+      //   .then((task) => {
+      //   console.log("task", task)
+      //   // for (t in task){
+      //   //   console.log(task[t])
+      //   // }
+      //   console.log("You selected task: ", task.id);
+      //   res.send(task.id)
+    // }).catch(error => console.log('error'))
+    // }
+    server.removeTodo(todoId)
       .then((todo) => {
-        res.redirect("/todo")
+        // res.redirect("/todo")
         console.log("💩 Task removed")
       })
-      .catch(err => {
-        res
-          .status(500)
-          .json({
-            error: err.message
-          });
-      });
+      // .catch(err => {
+      //   res
+      //     .status(500)
+      //     .json({
+      //       error: err.message
+      //     });
+      // });
   });
 
   return router;

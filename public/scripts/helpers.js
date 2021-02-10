@@ -91,34 +91,42 @@ $(() => {
   });
 
   // //Avoid page refresh when adding new todo
-  // $('.text-form').submit(function(event) {
-  //   event.preventDefault();
-  //   $.ajax({
-  //     type: "POST",
-  //     url: '/todo',
-  //     dataType: 'json',
-  //     success: function() {
-  //       const input = $('#user-input').val()
-  //       console.log('User input:', input)
-  //     },
-  //   })
-  //   .then(() => loadLists())
-//
-//   });
+  $('.text-form').submit(function(event) {
+    // event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: '/todo',
+      dataType: 'json',
+      success: function() {
+        const input = $('#user-input').val()
+        console.log('User input:', input)
+      },
+    })
+    .then(() => loadLists())
+
+  });
 
   const deleteHandler = function(event) {
-      event.preventDefault();
-      alert('delete?')
-
+      // event.preventDefault();
+      // alert('delete?')
+      $.ajax({
+        type: "POST",
+        url: '/todo/:id/delete',
+        success: function() {
+          console.log('delete successful')
+        },
+      })
   }
 
   //Delete icon to remove todo from list and db
   const addDeleteHandler = function () {
-    $('.card-icon').on('click', deleteHandler)
+    $('.bi-x').on('click', deleteHandler)
   }
 
   // In case a page reload is made, the lists will continue to display
+  // loadLists();
   loadLists();
 
 });
 
+// export { deleteHandler }

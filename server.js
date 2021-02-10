@@ -20,7 +20,8 @@ db.connect();
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
-app.use(morgan('dev'));
+
+// app.use(morgan('dev'));
 
 // app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -69,7 +70,7 @@ const getUser = function(username) {
 exports.getUser = getUser;
 
 const addTodo =  function(userId, category, todo) {
-  return db.query(`INSERT INTO to_dos (user_id, cetegory, text) VALUES ($1, $2, $3)`,
+  return db.query(`INSERT INTO to_dos (user_id, category, text, completed) VALUES ($1, $2, $3)`,
   [userId, category, todo])
   .then(res => res.rows)
   .catch(err => err)
@@ -77,10 +78,11 @@ const addTodo =  function(userId, category, todo) {
 exports.addTodo = addTodo;
 
 const getTodos = function(userid) {
-  return db.query(`SELECT * FROM to_dos JOIN users ON user_id = users.id WHERE users.id = $1`, [userid])
+  return db.query(`SELECT * FROM to_dos WHERE user_id = $1`, [userid])
     .then(res => res.rows)
     .catch(err => console.log('error'))
   }
+  // SELECT * FROM to_dos JOIN users ON user_id = users.id WHERE users.id = $1
 exports.getTodos = getTodos;
 
 const removeTodo =  function(todoId) {
