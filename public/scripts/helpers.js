@@ -18,6 +18,7 @@ $(() => {
       const tasks = list[id];
       for (const i in tasks) {
         const task = tasks[i];
+        const taskId = task.id;
         const $text = task.text;
         const $displayTodo = `<!-- LIST ITEM -->
         <div class="list-item">
@@ -27,7 +28,9 @@ $(() => {
             <span>${$text}</span>
           </label>
           <!-- DELETE BUTTON -->
-          <i class="card-icon bi bi-x"></i>
+          <form method="POST" action="/todo/${taskId}/delete">
+          <i class="card-icon bi bi-x" data-id="${taskId}"></i>
+          </form>
         </div>`
 
         const $read = $('#readlist');
@@ -79,9 +82,8 @@ $(() => {
       type: "POST",
       url: '/user/login',
       data: {user: user.val().trim()},
-      success: function() {
+      success: function(data) {
         const username = $('#login-form').val()
-        console.log("Did I get here")
         console.log('logged in as:', username)
         $("#submit-login").replaceWith(`<p>Welcome ${username}!</p>`)
         $(".logins").append(logout);
@@ -102,18 +104,20 @@ $(() => {
         console.log('User input:', input)
       },
     })
-    .then(() => loadLists())
+    .done(() => loadLists())
 
   });
 
   const deleteHandler = function(event) {
-      // event.preventDefault();
-      // alert('delete?')
+    const id = $(event.target).data('id')
+    console.log('id: ' + id +'delete successful')
+      alert('delete?')
       $.ajax({
         type: "POST",
-        url: '/todo/:id/delete',
+        url: `/todo/${id}/delete`,
+        dataType: 'json',
         success: function() {
-          console.log('delete successful')
+          console.log('id: ' + id +'delete successful')
         },
       })
   }
@@ -121,10 +125,12 @@ $(() => {
   //Delete icon to remove todo from list and db
   const addDeleteHandler = function () {
     $('.bi-x').on('click', deleteHandler)
+    .on('click', function() {
+      slideFade($(this.closest(".list-item")))
+    })
   }
 
   // In case a page reload is made, the lists will continue to display
-  // loadLists();
   loadLists();
 
 });
