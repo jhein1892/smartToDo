@@ -6,9 +6,14 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const server = require("../server")
-const {findFood, findBooks, findMovie, findItem} = require('../public/scripts/app')
+const {
+  findFood,
+  findBooks,
+  findMovie,
+  findItem
+} = require('../public/scripts/app')
 
 
 
@@ -27,8 +32,6 @@ module.exports = (db) => {
       .catch(err => {
         res.status(500).send({ error: err.message });
       });
-
-
   });
 
   // Add new todo
@@ -38,41 +41,58 @@ module.exports = (db) => {
     let book = false;
     let food = false;
     let movie = false;
-    findBooks(task).then((result) => {
-      if (result){
+    let category = [];
+    return findBooks(task).then((result) => {
+      if (result) {
         console.log("It's a Book")
-        book = true;
+        category.push('1')
+        return task;
       } else {
         console.log('Not a Book')
+        return task;
       }
-    });
-    findFood(task).then((result) => {
-      if (result === task){
-        console.log('Its food!')
-        food = true;
-      } else {
-        console.log('Not food')
-      }
-    })
-    findMovie(task).then((result) => {
-      if (result === task) {
-        console.log('Its a movie')
-        movie = true;
-      } else {
-        console.log('Not a movie')
-      }
-    })
-    // END OF API SECTION
-    server.addTodo(req.cookies["user_id"], task)
-      .then((task) => {
-        console.log("✅ Task added")
-        res.redirect("/")
+    }).then((result) => {
+      return findMovie(task).then((result) => {
+        if (result === task) {
+          console.log('Its a movie')
+          category.push('3')
+          return task;
+        } else {
+          console.log('Not a movie')
+          return task;
+        }
       })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+    }).then((result) => {
+      return findFood(task).then((result) => {
+        if (result === task) {
+          console.log('Its food!')
+          category.push('4')
+          return category;
+        } else {
+          console.log('4')
+          return category;
+        }
+      })
+    }).then((result) => {
+      if (result.includes('4')){
+        return category = '4';
+      } else if (result.includes('1')){
+        return category = '1';
+      } else if (result.includes('3')){
+        return category = '3';
+      } else {
+        return category = '2';
+      }
+    }).then((result) => {
+      console.log(result)
+      server.addTodo(req.cookies["user_id"], result, task)
+      .then((task) => {
+        console.log('Task added')
+        res.redirect('/')
+      })
+    })
+    .catch(error => console.log(error))
+    // END OF API SECTION
   });
 
   // Display todo by id
@@ -97,14 +117,16 @@ module.exports = (db) => {
         })
     }
     server.removeTodo(todoID)
-      .then ((todo) => {
+      .then((todo) => {
         res.redirect("/todo")
         console.log("💩 Task removed")
       })
       .catch(err => {
         res
           .status(500)
-          .json({ error: err.message });
+          .json({
+            error: err.message
+          });
       });
   });
 

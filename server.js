@@ -51,11 +51,7 @@ app.use("/todo", todosRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  const templateVars = {
-    user: req.cookies["user_id"]
-  }
-  console.log('😎', templateVars)
-  res.render("index", templateVars);
+  res.render("index");
 });
 
 app.listen(PORT, () => {
@@ -72,9 +68,9 @@ const getUser = function(username) {
   }
 exports.getUser = getUser;
 
-const addTodo =  function(userId, todo) {
-  return db.query(`INSERT INTO to_dos (user_id, text) VALUES ($1, $2)`,
-  [userId, todo])
+const addTodo =  function(userId, category, todo) {
+  return db.query(`INSERT INTO to_dos (user_id, cetegory, text) VALUES ($1, $2, $3)`,
+  [userId, category, todo])
   .then(res => res.rows)
   .catch(err => err)
 }
