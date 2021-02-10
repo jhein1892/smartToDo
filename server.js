@@ -51,11 +51,7 @@ app.use("/todo", todosRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  const templateVars = {
-    user: req.cookies["user_id"]
-  }
-  console.log('😎', templateVars)
-  res.render("index", templateVars);
+  res.render("index");
 });
 
 app.listen(PORT, () => {

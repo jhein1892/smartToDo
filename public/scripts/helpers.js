@@ -90,21 +90,21 @@ $(() => {
     .then(() => loadLists())
   });
 
-  //Avoid page refresh when adding new todo
-  $('.text-form').submit(function(event) {
-    event.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: '/todo',
-      dataType: 'json',
-      success: function() {
-        const input = $('#user-input').val()
-        console.log('User input:', input)
-      },
-    })
-    .then(() => loadLists())
-
-  });
+  // //Avoid page refresh when adding new todo
+  // $('.text-form').submit(function(event) {
+  //   event.preventDefault();
+  //   $.ajax({
+  //     type: "POST",
+  //     url: '/todo',
+  //     dataType: 'json',
+  //     success: function() {
+  //       const input = $('#user-input').val()
+  //       console.log('User input:', input)
+  //     },
+  //   })
+  //   .then(() => loadLists())
+//
+//   });
 
   const deleteHandler = function(event) {
       event.preventDefault();
