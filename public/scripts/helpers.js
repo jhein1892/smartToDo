@@ -92,9 +92,8 @@ $(() => {
     .then(() => loadLists())
   });
 
-  // //Avoid page refresh when adding new todo
-  $('.text-form').submit(function(event) {
-    // event.preventDefault();
+
+  const addingNewTodo = () => {
     $.ajax({
       type: "POST",
       url: '/todo',
@@ -106,12 +105,18 @@ $(() => {
     })
     .done(() => loadLists())
 
+  };
+
+  // //Avoid page refresh when adding new todo
+  $('.text-form').submit(function(event) {
+    event.preventDefault();
+    addingNewTodo;
   });
 
   const deleteHandler = function(event) {
     const id = $(event.target).data('id')
     console.log('id: ' + id +'delete successful')
-      alert('delete?')
+      // alert('delete?')
       $.ajax({
         type: "POST",
         url: `/todo/${id}/delete`,
