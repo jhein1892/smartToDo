@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Home Page</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
@@ -66,8 +68,8 @@
             </header>
 
             <div class="tab">
-              <button class="centerlined" id="todo-button">to do</button>
-              <button class="centerlined" id="completed-button">completed</button>
+              <button class="centerlined todo-button">to do</button>
+              <button class="centerlined completed-button">completed</button>
             </div>
 
             <!-- CHECKLIST -->
@@ -75,11 +77,16 @@
               <div id="readlist" class="list-group list-group-flush">
                 <!-- LIST ITEM -->
                 <!-- COMPLETED -->
-                <div class="read-complete">
+                <div class="complete-tab" id="read-complete">
                   <div class="list-item">
                     <!-- CHECKBOX -->
                     <label class="list-group-item">
-                      <input class="form-check-input" type="checkbox" checked/>
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        checked
+                        disabled
+                      />
                       <span>complete</span>
                     </label>
                     <!-- DELETE BUTTON -->
@@ -87,7 +94,7 @@
                   </div>
                 </div>
                 <!-- TODO -->
-                <div class="read-todo">
+                <div class="todo-tab" id="read-todo">
                   <div class="list-item">
                     <!-- CHECKBOX -->
                     <label class="list-group-item">
@@ -110,39 +117,62 @@
               <i class="card-icon bi bi-pencil-square"></i>
             </header>
 
+            <div class="tab">
+              <button class="centerlined todo-button">to do</button>
+              <button class="centerlined completed-button">completed</button>
+            </div>
+
             <div class="card-body">
               <div id="buylist" class="list-group list-group-flush">
-                <!-- LIST ITEM -->
-                <div class="list-item">
-                  <!-- CHECKBOX -->
-                  <label class="list-group-item">
-                    <input class="form-check-input" type="checkbox" />
-                    <span>Onion Chips</span>
-                  </label>
-                  <!-- DELETE BUTTON -->
-                  <i class="card-icon bi bi-x"></i>
+                <div class="complete-tab" id="read-complete">
+                  <div class="list-item">
+                    <!-- CHECKBOX -->
+                    <label class="list-group-item">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        checked
+                        disabled
+                      />
+                      <span>complete</span>
+                    </label>
+                    <!-- DELETE BUTTON -->
+                    <i class="card-icon bi bi-x"></i>
+                  </div>
                 </div>
+                <div class="todo-tab" id="buy-todo">
+                  <!-- LIST ITEM -->
+                  <div class="list-item">
+                    <!-- CHECKBOX -->
+                    <label class="list-group-item">
+                      <input class="form-check-input" type="checkbox" />
+                      <span>Onion Chips</span>
+                    </label>
+                    <!-- DELETE BUTTON -->
+                    <i class="card-icon bi bi-x"></i>
+                  </div>
 
-                <!-- LIST ITEM -->
-                <div class="list-item">
-                  <!-- CHECKBOX -->
-                  <label class="list-group-item">
-                    <input class="form-check-input" type="checkbox" />
-                    <span>Canned tuna</span>
-                  </label>
-                  <!-- DELETE BUTTON -->
-                  <i class="card-icon bi bi-x"></i>
-                </div>
+                  <!-- LIST ITEM -->
+                  <div class="list-item">
+                    <!-- CHECKBOX -->
+                    <label class="list-group-item">
+                      <input class="form-check-input" type="checkbox" />
+                      <span>Canned tuna</span>
+                    </label>
+                    <!-- DELETE BUTTON -->
+                    <i class="card-icon bi bi-x"></i>
+                  </div>
 
-                <!-- LIST ITEM -->
-                <div class="list-item">
-                  <!-- CHECKBOX -->
-                  <label class="list-group-item">
-                    <input class="form-check-input" type="checkbox" />
-                    <span>Butter chicken sauce</span>
-                  </label>
-                  <!-- DELETE BUTTON -->
-                  <i class="card-icon bi bi-x"></i>
+                  <!-- LIST ITEM -->
+                  <div class="list-item">
+                    <!-- CHECKBOX -->
+                    <label class="list-group-item">
+                      <input class="form-check-input" type="checkbox" />
+                      <span>Butter chicken sauce</span>
+                    </label>
+                    <!-- DELETE BUTTON -->
+                    <i class="card-icon bi bi-x"></i>
+                  </div>
                 </div>
               </div>
             </div>
@@ -156,39 +186,63 @@
               <i class="card-icon bi bi-pencil-square"></i>
             </header>
 
+            <div class="tab">
+              <button class="centerlined todo-button">to do</button>
+              <button class="centerlined completed-button">completed</button>
+            </div>
+
             <div class="card-body">
               <div id="watchlist" class="list-group list-group-flush">
                 <!-- LIST ITEM -->
-                <div class="list-item">
-                  <!-- CHECKBOX -->
-                  <label class="list-group-item">
-                    <input class="form-check-input" type="checkbox" />
-                    <span>Queen's Gambit</span>
-                  </label>
-                  <!-- DELETE BUTTON -->
-                  <i class="card-icon bi bi-x"></i>
+                <!-- COMPLETED -->
+                <div class="complete-tab" id="read-complete">
+                  <div class="list-item">
+                    <!-- CHECKBOX -->
+                    <label class="list-group-item">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        checked
+                        disabled
+                      />
+                      <span>complete</span>
+                    </label>
+                    <!-- DELETE BUTTON -->
+                    <i class="card-icon bi bi-x"></i>
+                  </div>
                 </div>
-
                 <!-- LIST ITEM -->
-                <div class="list-item">
-                  <!-- CHECKBOX -->
-                  <label class="list-group-item">
-                    <input class="form-check-input" type="checkbox" />
-                    <span>The Office</span>
-                  </label>
-                  <!-- DELETE BUTTON -->
-                  <i class="card-icon bi bi-x"></i>
-                </div>
+                <div class="todo-tab" id="watch-complete">
+                  <div class="list-item">
+                    <!-- CHECKBOX -->
+                    <label class="list-group-item">
+                      <input class="form-check-input" type="checkbox" />
+                      <span>Queen's Gambit</span>
+                    </label>
+                    <!-- DELETE BUTTON -->
+                    <i class="card-icon bi bi-x"></i>
+                  </div>
 
-                <!-- LIST ITEM -->
-                <div class="list-item">
-                  <!-- CHECKBOX -->
-                  <label class="list-group-item">
-                    <input class="form-check-input" type="checkbox" />
-                    <span>Breaking Bad</span>
-                  </label>
-                  <!-- DELETE BUTTON -->
-                  <i class="card-icon bi bi-x"></i>
+                  <div class="list-item">
+                    <!-- CHECKBOX -->
+                    <label class="list-group-item">
+                      <input class="form-check-input" type="checkbox" />
+                      <span>The Office</span>
+                    </label>
+                    <!-- DELETE BUTTON -->
+                    <i class="card-icon bi bi-x"></i>
+                  </div>
+
+                  <!-- LIST ITEM -->
+                  <div class="list-item">
+                    <!-- CHECKBOX -->
+                    <label class="list-group-item">
+                      <input class="form-check-input" type="checkbox" />
+                      <span>Breaking Bad</span>
+                    </label>
+                    <!-- DELETE BUTTON -->
+                    <i class="card-icon bi bi-x"></i>
+                  </div>
                 </div>
               </div>
             </div>
@@ -202,39 +256,63 @@
               <i class="card-icon bi bi-pencil-square"></i>
             </header>
 
+            <div class="tab">
+              <button class="centerlined todo-button">to do</button>
+              <button class="centerlined completed-button">completed</button>
+            </div>
+
             <div class="card-body">
               <div id="eatlist" class="list-group list-group-flush">
-                <!-- LIST ITEM -->
-                <div class="list-item">
-                  <!-- CHECKBOX -->
-                  <label class="list-group-item">
-                    <input class="form-check-input" type="checkbox" />
-                    <span>McDonald's</span>
-                  </label>
-                  <!-- DELETE BUTTON -->
-                  <i class="card-icon bi bi-x"></i>
+                <!-- COMPLETED -->
+                <div class="complete-tab" id="read-complete">
+                  <div class="list-item">
+                    <!-- CHECKBOX -->
+                    <label class="list-group-item">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        checked
+                        disabled
+                      />
+                      <span>complete</span>
+                    </label>
+                    <!-- DELETE BUTTON -->
+                    <i class="card-icon bi bi-x"></i>
+                  </div>
                 </div>
-
                 <!-- LIST ITEM -->
-                <div class="list-item">
-                  <!-- CHECKBOX -->
-                  <label class="list-group-item">
-                    <input class="form-check-input" type="checkbox" />
-                    <span>Stormcrow Ale House</span>
-                  </label>
-                  <!-- DELETE BUTTON -->
-                  <i class="card-icon bi bi-x"></i>
-                </div>
+                <div class="todo-tab" id="eat-complete">
+                  <div class="list-item">
+                    <!-- CHECKBOX -->
+                    <label class="list-group-item">
+                      <input class="form-check-input" type="checkbox" />
+                      <span>McDonald's</span>
+                    </label>
+                    <!-- DELETE BUTTON -->
+                    <i class="card-icon bi bi-x"></i>
+                  </div>
 
-                <!-- LIST ITEM -->
-                <div class="list-item">
-                  <!-- CHECKBOX -->
-                  <label class="list-group-item">
-                    <input class="form-check-input" type="checkbox" />
-                    <span>Tim Horton's</span>
-                  </label>
-                  <!-- DELETE BUTTON -->
-                  <i class="card-icon bi bi-x"></i>
+                  <!-- LIST ITEM -->
+                  <div class="list-item">
+                    <!-- CHECKBOX -->
+                    <label class="list-group-item">
+                      <input class="form-check-input" type="checkbox" />
+                      <span>Stormcrow Ale House</span>
+                    </label>
+                    <!-- DELETE BUTTON -->
+                    <i class="card-icon bi bi-x"></i>
+                  </div>
+
+                  <!-- LIST ITEM -->
+                  <div class="list-item">
+                    <!-- CHECKBOX -->
+                    <label class="list-group-item">
+                      <input class="form-check-input" type="checkbox" />
+                      <span>Tim Horton's</span>
+                    </label>
+                    <!-- DELETE BUTTON -->
+                    <i class="card-icon bi bi-x"></i>
+                  </div>
                 </div>
               </div>
             </div>
@@ -243,6 +321,7 @@
       </div>
     </section>
 
+    <footer>Project by Jacon Hein, Kevin Liang, & Maria Chavez</footer>
     <script type="text/javascript" src="/scripts/cards.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </body>

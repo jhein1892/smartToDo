@@ -3,6 +3,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #f1f2f3 !important;
+  position: relative;
+  min-height: 100vh!important;
 
   h1 {
     color: #ffffff;
@@ -64,4 +66,14 @@ nav {
       height: 2.1em;
     }
   }
+}
+
+footer{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 14px;
+}
+
+@media only screen and (min-width: 1024px) {
 }
