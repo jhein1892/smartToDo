@@ -30,8 +30,7 @@ module.exports = (db) => {
         const task = data;
         res.send({ task });
       })
-      .catch(err => {
-        res.status(500).send({ error: err.message });
+      .catch(err => { res.status(500).send({ error: err.message });
       });
   });
 
@@ -86,55 +85,27 @@ module.exports = (db) => {
       }
     }).then((result) => {
       console.log("this is the result for db: ", result)
-      server.addTodo(req.cookies["user_id"], result, task)
-      .then((task) => {
-        console.log('Task added')
-        res.redirect('/')
-      })
+      return server.addTodo(req.cookies["user_id"], result, task)
+      // .then((task) => {
+      //   console.log('Task added', task)
+      //   res.redirect('/')
+      // })
     })
     .catch(error => console.log(error))
     // END OF API SECTION
   });
 
-  // Display todo by id
-  router.get("/:id", (req, res) => {
-    server.getTodo(req.cookies["user_id"])
-    .then((task) => {
-      console.log("You selected task: ", task.id);
-      res.send(task.id)
-    })
-
-  });
-
   // Delete a task from list
   router.post("/:id/delete", (req, res) => {
-    // console.log("HERE")
-  // link server function
-    // const todoID = () => {
-    const todoId = req.params.id;
-    console.log("TodoID", todoId)
-      // server.getTodos(req.cookies["user_id"])
-      //   .then((task) => {
-      //   console.log("task", task)
-      //   // for (t in task){
-      //   //   console.log(task[t])
-      //   // }
-      //   console.log("You selected task: ", task.id);
-      //   res.send(task.id)
-    // }).catch(error => console.log('error'))
-    // }
+    const todoId = req.params.id
+    console.log("Todo id to remove: ", todoId)
     server.removeTodo(todoId)
       .then((todo) => {
-        // res.redirect("/todo")
         console.log("💩 Task removed")
+        res.send(todo)
       })
-      // .catch(err => {
-      //   res
-      //     .status(500)
-      //     .json({
-      //       error: err.message
-      //     });
-      // });
+      .catch(err => {res.status(400).json({error: err.message});
+      });
   });
 
   return router;

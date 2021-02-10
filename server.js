@@ -70,7 +70,7 @@ const getUser = function(username) {
 exports.getUser = getUser;
 
 const addTodo =  function(userId, category, todo) {
-  return db.query(`INSERT INTO to_dos (user_id, category, text, completed) VALUES ($1, $2, $3)`,
+  return db.query(`INSERT INTO to_dos (user_id, category, text) VALUES ($1, $2, $3)`,
   [userId, category, todo])
   .then(res => res.rows)
   .catch(err => err)
@@ -92,4 +92,3 @@ const removeTodo =  function(todoId) {
   .catch(err => err)
 }
 exports.removeTodo = removeTodo;
-
