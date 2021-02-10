@@ -34,6 +34,7 @@
     justify-content: center;
     justify-items: center;
     gap: 1rem;
+    margin-bottom: 5em;
 
     .list-item {
       display: flex;
@@ -114,14 +115,14 @@
   margin-left: 1em;
   margin-right: 1em;
 
-  #todo-button {
+  .todo-button {
     color: #4f4f4f;
     width: 100%;
     border-right: 1px solid rgba(0, 0, 0, 0.125);
     font-size: 14px;
   }
 
-  #completed-button {
+  .completed-button {
     color: #4f4f4f;
     width: 100%;
     font-size: 14px;
@@ -130,7 +131,7 @@
 
 #read:hover {
   transform: scale(1.03);
-  background-color: #cdf7ff;
+  background-color: #e0faff;
   .card-icon {
     transition: all 0.2s ease-in-out;
     opacity: 100%;
