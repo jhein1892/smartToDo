@@ -1,3 +1,6 @@
+// import { deleteHandler } from 'helpers.js'
+// import { getTodos } from "server.js";
+
 Sortable.create(readlist, {
   animation: 150,
   group: "shared",
@@ -56,5 +59,6 @@ $(document).ready(function () {
 
   $(".bi-x").click(function () {
     slideFade($(this.closest(".list-item")));
+    // deleteHandler()
   });
 });
