@@ -84,12 +84,12 @@ module.exports = (db) => {
         return category = '2';
       }
     }).then((result) => {
-      console.log("this is the result for db: ", result)
-      return server.addTodo(req.cookies["user_id"], result, task)
-      // .then((task) => {
-      //   console.log('Task added', task)
-      //   res.redirect('/')
-      // })
+      console.log("category assigned on db: ", result)
+      server.addTodo(req.cookies["user_id"], result, task)
+      .then((task) => {
+        console.log('✅ Task added')
+        res.json({id: result} )
+      })
     })
     .catch(error => console.log(error))
     // END OF API SECTION

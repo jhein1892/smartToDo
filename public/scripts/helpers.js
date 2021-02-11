@@ -14,6 +14,7 @@ $(() => {
 
 
   const renderList = function(list) {
+    // $(".list-group-item").empty();
     for (const id in list) {
       const tasks = list[id];
       for (const i in tasks) {
@@ -93,30 +94,25 @@ $(() => {
   });
 
 
-  const addingNewTodo = () => {
-    $.ajax({
-      type: "POST",
-      url: '/todo',
-      dataType: 'json',
-      success: function() {
-        const input = $('#user-input').val()
-        console.log('User input:', input)
-      },
-    })
-    .done(() => loadLists())
-
-  };
-
   // //Avoid page refresh when adding new todo
   $('.text-form').submit(function(event) {
     event.preventDefault();
-    addingNewTodo;
+
+    $.ajax({
+      type: "POST",
+      url: '/todo',
+      data: {user_input: $('#user-input').val()},
+      dataType: 'json',
+      success: function(response) {
+        console.log("response: ", response);
+      },
+    })
+    .then(() => loadLists())
   });
 
   const deleteHandler = function(event) {
     const id = $(event.target).data('id')
     console.log('id: ' + id +'delete successful')
-      // alert('delete?')
       $.ajax({
         type: "POST",
         url: `/todo/${id}/delete`,
