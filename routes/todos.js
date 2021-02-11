@@ -101,7 +101,7 @@ module.exports = (db) => {
 
   router.post("/:id/complete", (req, res) => {
     const todoId = req.params.id;
-    database.completeToDo(todoId)
+    return database.completeToDo(todoId)
     console.log("In complete", todoId)
   })
 

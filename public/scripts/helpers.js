@@ -37,15 +37,35 @@ $(() => {
         const $buy = $('#buylist');
         const $watch = $('#watchlist');
         const $eat = $('#eatlist');
+        const $readcomp = $('#read-complete');
+        const $buycomp = $('#buy-complete');
+        const $watchcomp = $('#watch-complete');
+        const $eatcomp = $('#eat-complete');
 
         if (task.category === 1) {
+          if (task.completed === false){
           $read.append($displayTodo);
+          } else {
+          $readcomp.append($displayTodo);
+          }
         } else if (task.category === 3) {
-          $watch.append($displayTodo);
+          if (task.completed === false){
+            $watch.append($displayTodo);
+            } else {
+            $watchcomp.append($displayTodo);
+            }
         } else if (task.category === 4) {
-          $eat.append($displayTodo);
+          if (task.completed === false){
+            $eat.append($displayTodo);
+            } else {
+            $eatcomp.append($displayTodo);
+            }
         } else {
-          $buy.append($displayTodo);
+          if (task.completed === false){
+            $buy.append($displayTodo);
+            } else {
+            $buycomp.append($displayTodo);
+            }
         }
       }
     }
@@ -75,6 +95,7 @@ $(() => {
 
   // Loads lists of a specific user id
   const loadLists = function() {
+    $('#user-input').val("")
     $.ajax({
       method: 'GET',
       url: '/todo',
@@ -138,7 +159,6 @@ $(() => {
   // Changing the status to complete
   $(document).on('click', '.form-check-input', function(event){
     const id = $(event.target).data('id');
-
     // if the box is not checked
      if($(this).is(":checked")){
       $.ajax({
@@ -147,15 +167,15 @@ $(() => {
         dataType: 'json',
         success: function() {
           console.log(`Task: ${id} completed`)
-        }
+        },
       })
     } else {
       alert('This is already completed')
-      // event.preventDefault();
     }
+    loadLists();
   })
 
   // In case of a page reload, the lists will continue to display
-  loadLists();
 
+  loadLists();
 });
