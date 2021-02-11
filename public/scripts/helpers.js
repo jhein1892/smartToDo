@@ -1,5 +1,4 @@
 $(() => {
-  console.log("Doc READY!");
 
   const login = `
   <form id="submit-login" action="/user/login" method="POST">
@@ -12,7 +11,7 @@ $(() => {
   <button type="submit" class="centerlined">Logout</button>
 </form>`;
 
-
+  // Categorize the existing db tasks for a specific user id and creates new ones
   const renderList = function(list) {
     for (const id in list) {
       const tasks = list[id];
@@ -51,6 +50,29 @@ $(() => {
     }
   };
 
+  // Function that calls the delete route
+  const deleteHandler = function(event) {
+    const id = $(event.target).data('id');
+    console.log('id: ' + id + 'delete successful');
+    $.ajax({
+      type: "POST",
+      url: `/todo/${id}/delete`,
+      dataType: 'json',
+      success: function() {
+        console.log('id: ' + id + 'delete successful');
+      },
+    });
+  };
+
+  // Adds event to delete icon
+  const addDeleteHandler = function() {
+    $('.bi-x').on('click', deleteHandler)
+      .on('click', function() {
+        slideFade($(this.closest(".list-item")));
+      });
+  };
+
+  // Loads lists of a specific user id
   const loadLists = function() {
     $.ajax({
       method: 'GET',
@@ -62,14 +84,14 @@ $(() => {
         addDeleteHandler();
       },
       error: (error) => {
-        console.log(error);
+        error;
       }
     });
     $(".list-item").empty();
   };
 
-
-  $('#submit-login').submit(function (event) {
+  // Login message
+  $('#submit-login').submit(function(event) {
     event.preventDefault();
 
     const user = $('#login-form');
@@ -95,7 +117,7 @@ $(() => {
   });
 
 
-  // //Avoid page refresh when adding new todo
+  // Add a new todo and avoid page refresh
   $('.text-form').submit(function(event) {
     event.preventDefault();
 
@@ -108,31 +130,10 @@ $(() => {
         console.log("response: ", response);
       },
     })
-    .then(() => loadLists());
+      .then(() => loadLists());
   });
 
-  const deleteHandler = function(event) {
-    const id = $(event.target).data('id');
-    console.log('id: ' + id + 'delete successful');
-    $.ajax({
-      type: "POST",
-      url: `/todo/${id}/delete`,
-      dataType: 'json',
-      success: function() {
-        console.log('id: ' + id +'delete successful');
-      },
-    })
-  }
-
-  //Delete icon to remove todo from list and db
-  const addDeleteHandler = function () {
-    $('.bi-x').on('click', deleteHandler)
-    .on('click', function() {
-      slideFade($(this.closest(".list-item")));
-    });
-  };
-
-  // In case a page reload is made, the lists will continue to display
+  // In case of a page reload, the lists will continue to display
   loadLists();
 
 });
