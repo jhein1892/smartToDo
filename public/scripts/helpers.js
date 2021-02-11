@@ -27,7 +27,7 @@ $(() => {
             <span>${$text}</span>
           </label>
           <!-- DELETE BUTTON -->
-          <form method="POST" action="/todo/${taskId}/delete">
+          <form method="POST" class="delete-icon" action="/todo/${taskId}/delete">
           <i class="card-icon bi bi-x" data-id="${taskId}"></i>
           </form>
         </div>`;
