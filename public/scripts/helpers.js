@@ -101,7 +101,6 @@ $(() => {
       url: '/todo',
       dataType: 'json',
       success: function(tasks) {
-        console.log("data: ", tasks);
         renderList(tasks);
         addDeleteHandler();
       },
@@ -167,10 +166,9 @@ $(() => {
         dataType: 'json',
         success: function() {
           console.log(`Task: ${id} completed`)
+          loadLists()
         },
-      })
-    } else {
-      alert('This is already completed')
+      });
     }
     loadLists();
   })

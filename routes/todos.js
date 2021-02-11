@@ -101,8 +101,17 @@ module.exports = (db) => {
 
   router.post("/:id/complete", (req, res) => {
     const todoId = req.params.id;
-    return database.completeToDo(todoId)
-    console.log("In complete", todoId)
+    const user = req.cookies["user_id"]
+    database.completeToDo(todoId)
+      .then((todo) => {
+        console.log("In complete", todoId)
+        res.send(todo);
+      })
+      .catch(err => {
+        err
+      });
+
+
   })
 
 
