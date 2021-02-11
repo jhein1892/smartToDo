@@ -34,3 +34,12 @@ const removeTodo =  function(todoId) {
     .catch(err => err);
 };
 exports.removeTodo = removeTodo;
+
+const completeToDo = function(todoId) {
+  return db.query(`UPDATE to_dos SET completed = true WHERE id = $1`, [todoId])
+    .then(res => res.rows[0])
+    .catch(err => err);
+}
+exports.completeToDo = completeToDo;
+
+

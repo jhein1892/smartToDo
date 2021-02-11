@@ -1,3 +1,4 @@
+
 $(() => {
 
   const login = `
@@ -22,8 +23,8 @@ $(() => {
         const $displayTodo = `<!-- LIST ITEM -->
         <div class="list-item">
           <!-- CHECKBOX -->
-          <label class="list-group-item">
-            <input class="form-check-input" type="checkbox" />
+          <label class="list-group-item" >
+            <input class="form-check-input" type="checkbox" data-id="${taskId}" />
             <span>${$text}</span>
           </label>
           <!-- DELETE BUTTON -->
@@ -53,13 +54,13 @@ $(() => {
   // Function that calls the delete route
   const deleteHandler = function(event) {
     const id = $(event.target).data('id');
-    console.log('id: ' + id + 'delete successful');
+    console.log('id: ' + id + ' delete successful');
     $.ajax({
       type: "POST",
       url: `/todo/${id}/delete`,
       dataType: 'json',
       success: function() {
-        console.log('id: ' + id + 'delete successful');
+        console.log('id: ' + id + ' delete successful');
       },
     });
   };
@@ -132,6 +133,27 @@ $(() => {
     })
       .then(() => loadLists());
   });
+
+
+  // Changing the status to complete
+  $(document).on('click', '.form-check-input', function(event){
+    const id = $(event.target).data('id');
+
+    // if the box is not checked
+     if($(this).is(":checked")){
+      $.ajax({
+        type: "POST",
+        url: `/todo/${id}/complete`,
+        dataType: 'json',
+        success: function() {
+          console.log(`Task: ${id} completed`)
+        }
+      })
+    } else {
+      alert('This is already completed')
+      // event.preventDefault();
+    }
+  })
 
   // In case of a page reload, the lists will continue to display
   loadLists();
