@@ -43,12 +43,12 @@ const completeToDo = function(todoId) {
     console.log(verdict)
     if (verdict === true){
       return db.query(`UPDATE to_dos SET completed = false WHERE id = $1`, [todoId])
-        .then(res => res.rows[0])
-        .catch(err => err)
+        // // .then(res => console.log(res))
+        // .catch(err => err)
     } else if (verdict === false) {
-      return db.query(`UPDATE to_dos SET completed = true WHERE id = $1`, [todoId])
-      .then(res => res.rows[0])
-      .catch(err => err)
+       return db.query(`UPDATE to_dos SET completed = true WHERE id = $1`, [todoId])
+      // .then(res => res.rows[0])
+      // .catch(err => err)
     }
   });
 }

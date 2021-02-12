@@ -101,7 +101,6 @@ module.exports = (db) => {
 
   router.post("/:id/complete", (req, res) => {
     const todoId = req.params.id;
-    const user = req.cookies["user_id"]
     database.completeToDo(todoId)
       .then((todo) => {
         console.log("In complete", todoId)
@@ -110,8 +109,6 @@ module.exports = (db) => {
       .catch(err => {
         err
       });
-
-
   })
 
 

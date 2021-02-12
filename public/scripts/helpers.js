@@ -159,18 +159,16 @@ $(() => {
   $(document).on('click', '.form-check-input', function(event){
     const id = $(event.target).data('id');
     // if the box is not checked
-     if($(this).is(":checked")){
       $.ajax({
         type: "POST",
         url: `/todo/${id}/complete`,
         dataType: 'json',
         success: function() {
+          loadLists();
           console.log(`Task: ${id} completed`)
-          loadLists()
         },
       });
-    }
-    loadLists();
+
   })
 
   // In case of a page reload, the lists will continue to display
