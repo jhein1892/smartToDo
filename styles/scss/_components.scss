@@ -137,7 +137,8 @@
 
 #read:hover {
   transform: scale(1.03);
-  background-color: #e0faff;
+  background-color: #ffb4d0;
+
   .card-icon {
     transition: all 0.2s ease-in-out;
     opacity: 100%;
@@ -146,7 +147,7 @@
 
 #eat:hover {
   transform: scale(1.03);
-  background-color: #ffb4d0;
+  background-color: #e0faff;
   .card-icon {
     transition: all 0.2s ease-in-out;
     opacity: 100%;
@@ -155,7 +156,7 @@
 
 #watch:hover {
   transform: scale(1.03);
-  background-color: #e9daff;
+  background-color: #d0e0ff;
   .card-icon {
     transition: all 0.2s ease-in-out;
     opacity: 100%;
@@ -164,7 +165,7 @@
 
 #buy:hover {
   transform: scale(1.03);
-  background-color: #d0e0ff;
+  background-color: #e9daff;
   .card-icon {
     transition: all 0.2s ease-in-out;
     opacity: 100%;
@@ -175,6 +176,4 @@
   border-bottom: none !important;
 }
 
-#title-image{
-  margin-bottom: 4em;
-}
+
