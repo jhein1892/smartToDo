@@ -76,7 +76,7 @@
           padding-right: 0.5em;
           background: transparent;
           display: flex;
-          width:100%;
+          width: 100%;
           align-items: center;
           border: none;
 
@@ -97,7 +97,7 @@
       }
     }
 
-    .delete-icon{
+    .delete-icon {
       display: flex;
       justify-content: center;
     }
@@ -169,4 +169,12 @@
     transition: all 0.2s ease-in-out;
     opacity: 100%;
   }
+}
+
+.list-item {
+  border-bottom: none !important;
+}
+
+#title-image{
+  margin-bottom: 4em;
 }
