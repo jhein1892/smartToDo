@@ -67,9 +67,9 @@
 
       .card-body {
         overflow: hidden;
-        &:hover {
-          overflow-y: scroll;
-        }
+        // &:hover {
+        //   overflow-y: scroll;
+        // }
 
         .list-group-item {
           padding-left: 0.5em;
